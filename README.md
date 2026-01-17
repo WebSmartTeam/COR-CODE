@@ -13,6 +13,7 @@ Developed by [COR Solutions](https://msp.corsolutions.co.uk) - Professional AI-e
 | `agents/` | Specialist personas for domain expertise |
 | `hooks/` | Automation hooks for quality gates |
 | `output-styles/` | Custom output styles for behaviour modification |
+| `references/` | Official Anthropic documentation links (timestamped) |
 
 ## Understanding the Components
 

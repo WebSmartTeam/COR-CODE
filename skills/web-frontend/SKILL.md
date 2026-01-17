@@ -1,6 +1,6 @@
 ---
-name: web-frontend-skill
-description: Apply frontend development standards for React/Next.js/Tailwind projects. Covers colour extraction from logos, avoiding AI-slop aesthetics, performance targets (LCP <2.5s), and modern CSS patterns. Use when building UI components, choosing colours, creating layouts, fixing styling, or checking Core Web Vitals. Triggers: component, responsive, accessibility, styling, UI, colours, Tailwind, layout, hover states, buttons.
+name: web-frontend
+description: Apply frontend development standards for React/Next.js/Tailwind projects. Covers colour extraction from logos, avoiding AI-slop aesthetics, performance targets (LCP <2.5s), and modern CSS patterns. Triggers: component, responsive, accessibility, styling, UI, colours, Tailwind, layout, hover states, buttons, frontend.
 compatibility: Requires `claude --chrome` or `claude --chrome --resume` for colour picker and console access
 ---
 

@@ -1,7 +1,9 @@
-# Supabase MCP Local Project Configuration
+---
+name: supabase-mcp-setup
+description: Configure Supabase MCP server for a specific project using local .mcp.json (NOT global). Each project needs its own config to prevent wrong-database queries. Triggers: setup supabase mcp, install supabase mcp, configure supabase mcp, connect supabase, supabase database access, mcp not loading supabase.
+---
 
-## Trigger
-When user says: "setup supabase mcp", "install supabase mcp", "configure supabase mcp"
+# Supabase MCP Local Project Configuration
 
 ## Why Local (Not Global)
 - Each project has its own Supabase database

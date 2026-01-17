@@ -1,3 +1,8 @@
+---
+name: nextjs-404-troubleshooting
+description: Fix Next.js 404 errors from async params, localStorage SSR issues, and domain config mismatches. Covers Next.js 15/16 breaking changes where params became Promise-based. Triggers: 404 error, page not found, pages not generating, all 404s, localStorage SSR, async params, generateStaticParams not working.
+---
+
 # Next.js 404 Troubleshooting - Lessons Learned
 **Status:** ✅ WORKING
 

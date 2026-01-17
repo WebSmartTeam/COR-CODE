@@ -1,6 +1,6 @@
 ---
 name: programmatic-claude
-description: Run Claude Code programmatically via CLI (-p flag), Python SDK, or TypeScript SDK. Use for automation, CI/CD, session chaining, headless execution, and orchestrating multiple Claude instances.
+description: Run Claude Code programmatically via CLI (-p flag), Python SDK, or TypeScript SDK. For automation, CI/CD, session chaining, headless execution, and orchestrating multiple Claude instances. Triggers: programmatic, headless, CLI automation, session chaining, -p flag, Python SDK, orchestrate Claude, CI/CD Claude, run Claude automatically.
 ---
 
 # Programmatic Claude Code

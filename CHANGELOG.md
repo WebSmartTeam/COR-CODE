@@ -6,6 +6,24 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 ---
 
+## [1.0.5] - 2025-01-17
+
+### Added
+
+**References:**
+- `references/anthropic-official-docs.md` - Tracked URLs for official Anthropic documentation
+- All docs available as .md at `https://code.claude.com/docs/en/*.md`
+- Timestamped for tracking when last verified
+
+### Improved
+
+**All Skills** - Updated descriptions with "What + When + Triggers" formula:
+- Proper frontmatter on all SKILL.md files
+- Trigger terms for better Claude matching
+- Consistent naming (fixed mismatches)
+
+---
+
 ## [1.0.4] - 2025-01-17
 
 ### Added
