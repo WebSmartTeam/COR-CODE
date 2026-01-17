@@ -10,6 +10,24 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 ### Added
 
+**Context:**
+- `CLAUDE.md` - Global configuration template with placeholders
+- `README.md` - Installation and customisation instructions
+
+**Agents:**
+- `frontend` - UI/UX specialist with accessibility focus
+- `backend` - Reliability engineer and API specialist
+- `security` - Threat modeling and vulnerability assessment
+- `performance` - Optimisation and bottleneck elimination
+- `architect` - Systems design and scalability
+- `qa` - Quality assurance and testing
+- `refactorer` - Code quality and technical debt
+- `scribe` - Documentation with UK English standards
+- `mentor` - Educational guidance and knowledge transfer
+- `devops` - Infrastructure and deployment automation
+- `analyzer` - Root cause analysis and investigation
+- `design-reviewer` - Visual UI assessment using Playwright
+
 **Skills:**
 - `feature-dev` - 7-phase feature development workflow with visual validation
 - `contact-form-builder` - AWS SES contact forms with reCAPTCHA v3

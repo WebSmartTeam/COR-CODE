@@ -30,6 +30,9 @@ cp -r COR-CODE/agents/* ~/.claude/agents/
 
 # Copy hooks
 cp -r COR-CODE/hooks/* ~/.claude/hooks/
+
+# Copy global CLAUDE.md (customise placeholders after copying)
+cp COR-CODE/context/CLAUDE.md ~/.claude/CLAUDE.md
 ```
 
 ### Install Specific Skill
