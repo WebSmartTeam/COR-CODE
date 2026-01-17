@@ -6,27 +6,29 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 ---
 
+## [1.0.1] - 2025-01-17
+
+### Added
+
+**Documentation:**
+- Skills vs Agents vs MCP explanation in main README
+- Clarified relationship between the three core concepts
+- Added comparison table to skills/README.md
+
+### Changed
+
+- Renamed `context/` folder to `global-claude/` for clarity
+- Updated all READMEs with global vs local configuration guidance
+
+---
+
 ## [1.0.0] - 2025-01-17
 
 ### Added
 
-**Context:**
+**Global Claude:**
 - `CLAUDE.md` - Global configuration template with placeholders
 - `README.md` - Installation and customisation instructions
-
-**Agents:**
-- `frontend` - UI/UX specialist with accessibility focus
-- `backend` - Reliability engineer and API specialist
-- `security` - Threat modeling and vulnerability assessment
-- `performance` - Optimisation and bottleneck elimination
-- `architect` - Systems design and scalability
-- `qa` - Quality assurance and testing
-- `refactorer` - Code quality and technical debt
-- `scribe` - Documentation with UK English standards
-- `mentor` - Educational guidance and knowledge transfer
-- `devops` - Infrastructure and deployment automation
-- `analyzer` - Root cause analysis and investigation
-- `design-reviewer` - Visual UI assessment using Playwright
 
 **Skills:**
 - `feature-dev` - 7-phase feature development workflow with visual validation
@@ -52,6 +54,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 - `mentor` - Educational guidance and knowledge transfer
 - `devops` - Infrastructure and deployment automation
 - `analyzer` - Root cause analysis and investigation
+- `design-reviewer` - Visual UI assessment using Playwright
 
 **Hooks:**
 - Pre-tool validation for security and quality
@@ -73,4 +76,5 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 | Version | Date | Summary |
 |---------|------|---------|
+| 1.0.1 | 2025-01-17 | Documentation improvements: Skills vs Agents vs MCP |
 | 1.0.0 | 2025-01-17 | Initial release with skills, agents, and hooks |
