@@ -125,6 +125,43 @@ Skills and agents use placeholders for user-specific values:
 | `your-api-key-here` | Your actual API key |
 | `your-project` | Your project name |
 
+## Development Workflow
+
+**COR-CODE is a distribution repository** - not a development environment.
+
+### The Correct Workflow
+
+```
+~/.claude/skills/       →  COR-CODE/skills/
+(develop & test here)      (copy for distribution)
+```
+
+1. **Develop in Global** (`~/.claude/skills/`): Create and test skills where they actually run
+2. **Copy to COR-CODE**: Once working, copy to distribution repo
+3. **Commit COR-CODE**: Push the distribution package
+
+### Syncing Skills
+
+```bash
+# After fixing a skill in global:
+cp -r ~/.claude/skills/feature-dev/* COR-CODE/skills/feature-dev/
+
+# Or sync all skills:
+rsync -av --exclude='.DS_Store' ~/.claude/skills/ COR-CODE/skills/
+
+# Then commit COR-CODE
+git -C COR-CODE add -A && git -C COR-CODE commit -m "sync: Update skills from global"
+```
+
+### Location-Specific Skills
+
+Some skills only make sense in one location:
+
+| Skill | Location | Reason |
+|-------|----------|--------|
+| `global-config-audit` | Global only | Audits YOUR personal config |
+| `programmatic-claude` | COR-CODE only | Documentation about distributing Claude setups |
+
 ## UK Standards
 
 This framework follows UK conventions:
