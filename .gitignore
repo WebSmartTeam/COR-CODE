@@ -1,0 +1,61 @@
+# COR-CODE Distribution Repository
+# This repo is for PUBLIC distribution - never commit secrets!
+
+# Sensitive files
+*.env
+*.env.*
+.env.local
+.env.production
+credentials*
+secrets*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Personal settings that shouldn't be shared
+settings.local.json
+*.local.json
+*.local.md
+
+# API keys pattern files
+*-keys.json
+*-credentials.json
+*-secrets.json
+
+# MCP server source (may contain keys)
+mcp-servers/
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# Logs
+*.log
+logs/
+
+# Temp files
+tmp/
+temp/
+*.tmp
+
+# Node modules (if any scripts use them)
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Testing artifacts
+coverage/
+.nyc_output/
