@@ -6,6 +6,18 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 ---
 
+## [1.0.4] - 2025-01-17
+
+### Added
+
+**Skills:**
+- `programmatic-claude/` - Run Claude Code via CLI, Python SDK, or TypeScript SDK
+- `harvest-and-build.md` - Website cloning automation pipeline (Firecrawl → Analyse → Build → Validate)
+- Session chaining patterns with `--resume` for multi-phase orchestration
+- Custom tools, MCP integration, and structured JSON output examples
+
+---
+
 ## [1.0.3] - 2025-01-17
 
 ### Added
@@ -103,6 +115,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 | Version | Date | Summary |
 |---------|------|---------|
+| 1.0.4 | 2025-01-17 | Programmatic Claude skill for CLI/SDK automation |
 | 1.0.3 | 2025-01-17 | AI-first and autonomous executor output styles |
 | 1.0.2 | 2025-01-17 | Added output-styles folder with UK professional style |
 | 1.0.1 | 2025-01-17 | Documentation improvements: Skills vs Agents vs MCP |

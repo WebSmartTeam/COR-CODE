@@ -93,6 +93,7 @@ cp -r COR-CODE/skills/feature-dev ~/.claude/skills/
 | `seo-skill` | Technical SEO patterns | No |
 | `non-stop` | Autonomous development mode | Yes |
 | `vercel-deployment` | UK-first Vercel deployment | No |
+| `programmatic-claude` | Run Claude via CLI/SDK for automation | No |
 
 ## Agents Overview
 
