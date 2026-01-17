@@ -8,11 +8,24 @@ Developed by [COR Solutions](https://msp.corsolutions.co.uk) - Professional AI-e
 
 | Folder | Contents |
 |--------|----------|
+| `global-claude/` | Global CLAUDE.md template and documentation |
 | `skills/` | User-invocable skills for common workflows |
 | `agents/` | Specialist personas for domain expertise |
 | `hooks/` | Automation hooks for quality gates |
-| `context/` | Context files for project standards |
-| `scripts/` | Utility scripts for installation/setup |
+
+## Global vs Local Configuration
+
+Claude Code supports configuration at two levels:
+
+| Level | Location | Scope |
+|-------|----------|-------|
+| **Global** | `~/.claude/` | All projects, all sessions |
+| **Local** | `<project>/.claude/` | Single project only |
+
+**Global** = Personal preferences that follow you everywhere
+**Local** = Project-specific rules committed to git and shared with team
+
+Each folder in COR-CODE explains how to install globally or locally. See the README in each folder for details.
 
 ## Quick Start
 
@@ -32,7 +45,7 @@ cp -r COR-CODE/agents/* ~/.claude/agents/
 cp -r COR-CODE/hooks/* ~/.claude/hooks/
 
 # Copy global CLAUDE.md (customise placeholders after copying)
-cp COR-CODE/context/CLAUDE.md ~/.claude/CLAUDE.md
+cp COR-CODE/global-claude/CLAUDE.md ~/.claude/CLAUDE.md
 ```
 
 ### Install Specific Skill

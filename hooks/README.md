@@ -2,6 +2,17 @@
 
 Hooks run shell commands at specific points in Claude Code's workflow. They extend behaviour without modifying Claude itself.
 
+## Global vs Local Hooks
+
+| Aspect | Global (`~/.claude/settings.json`) | Local (`<project>/.claude/settings.json`) |
+|--------|------------------------------------|--------------------------------------------|
+| **Scope** | All projects, all sessions | Single project only |
+| **Purpose** | Personal automation everywhere | Project-specific quality gates |
+| **Git** | Not in any repo (personal) | Committed to project repo (shared with team) |
+| **Examples** | Skill detection, logging | Project-specific validation, client rules |
+
+**Note:** Hook scripts live in `~/.claude/hooks/` (global) or `<project>/.claude/hooks/` (local). The `settings.json` references them.
+
 ## Current Setup
 
 **One hook active** - skill-detector on prompt submit:

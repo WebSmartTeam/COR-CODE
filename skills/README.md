@@ -2,6 +2,24 @@
 
 Skills teach Claude specific capabilities. Claude auto-discovers and applies them when your request matches their description.
 
+## Global vs Local Skills
+
+| Aspect | Global (`~/.claude/skills/`) | Local (`<project>/.claude/skills/`) |
+|--------|------------------------------|-------------------------------------|
+| **Scope** | All projects, all sessions | Single project only |
+| **Purpose** | Personal workflows used everywhere | Project-specific automation |
+| **Git** | Not in any repo (personal) | Committed to project repo (shared with team) |
+| **Examples** | Deployment skills, email notifications | Project build scripts, client-specific workflows |
+
+**Installation:**
+```bash
+# Global (personal, all projects)
+cp -r skills/* ~/.claude/skills/
+
+# Local (one project only)
+cp -r skills/* <project>/.claude/skills/
+```
+
 ## Structure
 
 ```

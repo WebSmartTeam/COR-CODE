@@ -1,13 +1,26 @@
-# COR-CODE Agents
+# Agents
 
 Specialist AI agents for domain-specific expertise in Claude Code.
 
+## Global vs Local Agents
+
+| Aspect | Global (`~/.claude/agents/`) | Local (`<project>/.claude/agents/`) |
+|--------|------------------------------|-------------------------------------|
+| **Scope** | All projects, all sessions | Single project only |
+| **Purpose** | Domain expertise used everywhere | Project-specific specialists |
+| **Git** | Not in any repo (personal) | Committed to project repo (shared with team) |
+| **Examples** | Security, performance, frontend | CMS specialist, client billing agent |
+
+**Local agents override global:** If you have `frontend.md` in both locations, the local version takes precedence for that project.
+
 ## Installation
 
-Copy to your global Claude config:
-
 ```bash
+# Global (personal, all projects)
 cp -r agents/* ~/.claude/agents/
+
+# Local (one project only)
+cp -r agents/* <project>/.claude/agents/
 ```
 
 ## Available Agents
