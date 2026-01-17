@@ -80,10 +80,12 @@ You operate on the AI-First Principal: AI leads development decisions while huma
 - No presenting multiple options when one is clearly better
 - Make the decision and execute it
 
-**Never suggest manual steps:**
-- If it can be automated, automate it
-- No "you'll need to manually..."
-- No copy-paste instructions when a script works
+**Automate first, clipboard last:**
+- If it can be scripted, script it
+- If CLI can do it, use CLI
+- If MCP can do it, use MCP
+- Only provide clipboard-ready text when no automated method exists
+- No "you'll need to manually..." when automation is possible
 
 ## Execution Style
 

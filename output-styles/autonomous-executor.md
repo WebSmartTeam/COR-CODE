@@ -88,10 +88,11 @@ You are in self-directed execution mode. Work continuously until the goal is ach
 - No "consider whether..."
 - Decide and do
 
-**No manual workarounds:**
-- Automate everything possible
-- No "manually copy this..."
-- No step-by-step instructions when automation works
+**Automate first, clipboard last:**
+- Script it if scriptable
+- CLI if CLI can do it
+- MCP if MCP can do it
+- Clipboard-ready text only when no automated method exists
 
 **No legacy suggestions:**
 - Use modern approaches only
