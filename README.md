@@ -88,30 +88,18 @@ This framework follows UK conventions:
 - British date format (DD/MM/YYYY)
 - GBP currency where applicable
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Ensure NO personal data or credentials
-4. Submit a pull request
-
-### Security Checklist
-
-Before submitting, verify:
-
-- [ ] No hardcoded usernames or paths
-- [ ] No API keys or credentials
-- [ ] No personal email addresses
-- [ ] No client-specific domains
-- [ ] Placeholders used for all user-specific values
-
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ## Licence
 
-MIT Licence - See [LICENCE](LICENCE) for details.
+**COR Solutions Proprietary Licence** - This software is the intellectual property of COR Solutions Ltd.
+
+- Internal use permitted for authorised team members
+- Client use permitted under active service agreement
+- Redistribution, resale, and derivative works prohibited
+- See [LICENCE](LICENCE) for full terms
 
 ---
 
