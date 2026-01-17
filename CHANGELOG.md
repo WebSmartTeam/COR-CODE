@@ -4,17 +4,6 @@ All notable changes to this project are documented here.
 
 Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
-
-### Added
--
-
-### Changed
--
-
-### Fixed
--
-
 ---
 
 ## [1.0.0] - 2025-01-17
