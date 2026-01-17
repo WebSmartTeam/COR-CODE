@@ -2,6 +2,33 @@
 
 Specialist AI agents for domain-specific expertise in Claude Code.
 
+## Understanding Agents (Subagents)
+
+In Claude Code's official terminology, these are called **subagents**. They run in their own context window with:
+- Custom system prompts
+- Specific tool access
+- Independent permissions
+
+**Key distinction from Skills:**
+- **Skills** add knowledge to the current conversation (guidance, patterns)
+- **Subagents** run in a *separate context* with isolation
+
+Subagents cannot spawn other subagents. If you need nested delegation, use Skills or chain subagents from the main conversation.
+
+## Built-in Subagents
+
+Claude Code includes these built-in subagents that activate automatically:
+
+| Subagent | Model | Tools | Purpose |
+|----------|-------|-------|---------|
+| **Explore** | Haiku | Read-only | File discovery, code search, codebase exploration |
+| **Plan** | Inherits | Read-only | Research for planning mode |
+| **general-purpose** | Inherits | All tools | Complex research, multi-step operations |
+| **Bash** | Inherits | Terminal | Running commands in separate context |
+| **Claude Code Guide** | Haiku | Read-only | Answering questions about Claude Code |
+
+**Explore** has thoroughness levels: `quick`, `medium`, `very thorough`
+
 ## Global vs Local Agents
 
 | Aspect | Global (`~/.claude/agents/`) | Local (`<project>/.claude/agents/`) |
@@ -40,26 +67,72 @@ cp -r agents/* <project>/.claude/agents/
 | `analyzer` | Root cause analysis and investigation |
 | `design-reviewer` | Visual UI assessment using Playwright |
 
+## Agent File Format
+
+Agents are Markdown files with YAML frontmatter:
+
+```yaml
+---
+name: code-reviewer
+description: Reviews code for quality and best practices
+tools: Read, Glob, Grep
+model: sonnet
+---
+
+You are a code reviewer. Analyze code and provide specific,
+actionable feedback on quality, security, and best practices.
+```
+
+### Supported Fields
+
+| Field | Required | Description |
+|-------|----------|-------------|
+| `name` | Yes | Lowercase with hyphens |
+| `description` | Yes | When Claude should delegate to this agent |
+| `tools` | No | Allowed tools (inherits all if omitted) |
+| `disallowedTools` | No | Tools to deny |
+| `model` | No | `sonnet`, `opus`, `haiku`, or `inherit` |
+| `permissionMode` | No | `default`, `acceptEdits`, `dontAsk`, `bypassPermissions`, `plan` |
+| `skills` | No | Skills to load into agent's context |
+| `hooks` | No | Lifecycle hooks for this agent |
+
 ## Usage
 
-Agents auto-activate based on context keywords, or use explicit flags:
+Agents auto-activate based on context keywords, or request explicitly:
 
 ```bash
+# Explicit request
+Use the code-reviewer agent to review my changes
+
+# Or use flags
 --agent-frontend      # UI/UX work
 --agent-backend       # API development
 --agent-security      # Security audit
 --agent-performance   # Optimisation
 ```
 
-## Agent Features
+## Common Patterns
 
-Each agent includes:
+### Isolate High-Volume Operations
+Delegate verbose tasks (running tests, processing logs) to keep your main context clean.
 
-- **Tools**: Specific tool combinations for the domain
-- **Priorities**: Clear decision framework
-- **MCP Preferences**: Recommended MCP servers
-- **Auto-Activation**: Context keywords that trigger the agent
-- **Commands**: Optimised command suggestions
+### Run Parallel Research
+Spawn multiple agents to investigate independent areas simultaneously.
+
+### Chain Agents
+Use agents in sequence - each completes and returns results for the next.
+
+## When to Use Agents vs Main Conversation
+
+**Use agents when:**
+- Task produces verbose output you don't need in main context
+- You want specific tool restrictions or permissions
+- Work is self-contained and can return a summary
+
+**Use main conversation when:**
+- Task needs frequent back-and-forth
+- Multiple phases share significant context
+- Making a quick, targeted change
 
 ## Customisation
 
@@ -74,6 +147,10 @@ Edit any agent file to adjust:
 
 The `scribe` agent enforces UK English standards for documentation.
 All agents follow professional British communication conventions.
+
+## Docs
+
+https://code.claude.com/docs/en/sub-agents
 
 ---
 
