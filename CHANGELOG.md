@@ -6,6 +6,22 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 ---
 
+## [1.0.2] - 2025-01-17
+
+### Added
+
+**Output Styles:**
+- `output-styles/` folder with README and documentation
+- `uk-professional.md` - British English, formal communication, enterprise standards
+- Comprehensive comparison of Output Styles vs CLAUDE.md vs Agents vs Skills
+
+**Documentation:**
+- Updated main README with all five component types
+- "Understanding the Components" section with clear distinctions
+- Added output-styles to Quick Start installation
+
+---
+
 ## [1.0.1] - 2025-01-17
 
 ### Added
@@ -76,5 +92,6 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 | Version | Date | Summary |
 |---------|------|---------|
+| 1.0.2 | 2025-01-17 | Added output-styles folder with UK professional style |
 | 1.0.1 | 2025-01-17 | Documentation improvements: Skills vs Agents vs MCP |
 | 1.0.0 | 2025-01-17 | Initial release with skills, agents, and hooks |

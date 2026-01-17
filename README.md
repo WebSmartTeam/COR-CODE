@@ -12,24 +12,29 @@ Developed by [COR Solutions](https://msp.corsolutions.co.uk) - Professional AI-e
 | `skills/` | User-invocable skills for common workflows |
 | `agents/` | Specialist personas for domain expertise |
 | `hooks/` | Automation hooks for quality gates |
+| `output-styles/` | Custom output styles for behaviour modification |
 
-## Skills vs Agents vs MCP
+## Understanding the Components
 
-Understanding how these three concepts work together:
-
-| Component | What It Does | Example |
-|-----------|--------------|---------|
-| **Skills** | Add knowledge to the current conversation | "Always use UK English", "Follow this deployment pattern" |
-| **Agents** | Run in separate context with specific tools | Security specialist with threat modeling focus |
-| **MCP** | Provides tools Claude can use | Database connections, browser automation |
+| Component | What It Does | Scope |
+|-----------|--------------|-------|
+| **Output Styles** | *Replaces* Claude's system prompt | Fundamental behaviour change |
+| **CLAUDE.md** | *Adds* context after system prompt | Project rules and standards |
+| **Skills** | Add knowledge to current conversation | Guidance and patterns |
+| **Agents** | Run in separate isolated context | Domain expertise with tool restrictions |
+| **MCP** | Provides external tools | Database, browser, API connections |
 
 **The relationship:**
-- **Skills** tell Claude *how* to use tools and follow standards
-- **Agents** run in *isolation* with their own tool access and domain expertise
+- **Output Styles** change *how Claude thinks* at the system level
+- **CLAUDE.md** adds *project context* without changing core behaviour
+- **Skills** teach Claude *how* to follow standards and patterns
+- **Agents** run in *isolation* with domain expertise
 - **MCP** *provides* the tools themselves (Context7, Playwright, etc.)
 
 **When to use which:**
-- Use **Skills** for guidance, patterns, and standards
+- Use **Output Styles** to fundamentally change Claude's behaviour
+- Use **CLAUDE.md** for project-specific rules and context
+- Use **Skills** for reusable guidance and workflows
 - Use **Agents** when you need isolation or different tool access
 - Use **MCP** to connect Claude to external systems
 
@@ -63,6 +68,9 @@ cp -r COR-CODE/agents/* ~/.claude/agents/
 
 # Copy hooks
 cp -r COR-CODE/hooks/* ~/.claude/hooks/
+
+# Copy output styles
+cp -r COR-CODE/output-styles/* ~/.claude/output-styles/
 
 # Copy global CLAUDE.md (customise placeholders after copying)
 cp COR-CODE/global-claude/CLAUDE.md ~/.claude/CLAUDE.md
