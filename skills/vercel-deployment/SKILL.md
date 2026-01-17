@@ -1,6 +1,6 @@
 ---
 name: vercel-deployment
-description: Deploy UK projects to Vercel using git-based workflow with dynamic version checking
+description: Deploy projects to Vercel with UK standards (London region lhr1, UK English). Git-based workflow only - never use vercel CLI for deployment. Includes security headers, version checking via Context7, and pre-deployment checklist. Triggers: deploy, vercel, publish, go live, deployment, hosting, push to production.
 category: deployment
 global: true
 ---

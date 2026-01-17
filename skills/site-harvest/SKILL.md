@@ -1,5 +1,5 @@
 ---
-description: Extract complete website content, design, and assets using Firecrawl + Chrome comparison
+description: Extract complete website content, design system, and assets for rebuilding or migration. Uses Firecrawl for content/CSS extraction, Chrome for visual comparison. Generates theme skill file for rebuild. Triggers: harvest site, scrape website, extract design, clone website, migrate site, copy website design.
 compatibility: Requires `claude --chrome` or `claude --chrome --resume` for side-by-side comparison phase
 user-invocable: true
 allowed_tools:

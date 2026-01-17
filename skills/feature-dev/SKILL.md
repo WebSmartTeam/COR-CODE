@@ -1,5 +1,5 @@
 ---
-description: Add features to existing projects with structured 7-phase workflow
+description: Implement new features in existing projects using 7-phase workflow (Discovery → Explore → Clarify → Design → Implement → Review → Summary). Use when adding functionality, building new components, creating API endpoints, or extending existing systems. Triggers: new feature, implement, add functionality, build feature, extend, create endpoint.
 compatibility: Requires `claude --chrome` or `claude --chrome --resume` for visual validation
 user-invocable: true
 allowed_tools:

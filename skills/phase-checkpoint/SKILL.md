@@ -1,5 +1,5 @@
 ---
-description: Verification checkpoint between build phases - confirms before proceeding
+description: Pause for human verification between major build phases. Presents summary of completed work, verification steps, and checklist before proceeding. Use after completing foundation, auth, core features, payments, or before deployment. Triggers: checkpoint, verify phase, phase complete, ready to proceed, quality gate, before next phase.
 allowed_tools:
   - Read
   - Bash

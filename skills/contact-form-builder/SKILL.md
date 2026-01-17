@@ -1,6 +1,6 @@
 ---
-name: ses-contact-form
-description: Build contact forms with AWS SES email delivery, reCAPTCHA v3, and branded HTML templates
+name: contact-form-builder
+description: Build professional contact forms with AWS SES email delivery, reCAPTCHA v3 spam protection, and branded HTML templates. Sends dual emails - owner notification + customer confirmation. Triggers: contact form, build form, email form, create contact page, add contact form, form with email.
 ---
 
 # AWS SES Contact Form Builder

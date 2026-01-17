@@ -1,6 +1,6 @@
 ---
 name: skill-building
-description: How to build effective skills and agents that complement training data
+description: Create effective Claude Code skills and agents. Covers the formula - references activate dormant knowledge, pet hates stop bad defaults, post-training fills gaps. Don't teach Claude what Claude knows. Triggers: create skill, build skill, write skill, make agent, skill template, agent template.
 ---
 
 # Skill & Agent Building
