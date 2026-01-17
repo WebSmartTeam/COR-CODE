@@ -6,6 +6,17 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 ---
 
+## [1.0.3] - 2025-01-17
+
+### Added
+
+**Output Styles:**
+- `ai-first-builder.md` - Autonomous AI-first development with evidence-based execution
+- `autonomous-executor.md` - Self-directed execution mode, work until complete
+- Both include "Banned Patterns" section (no fallbacks, no hedging, no legacy)
+
+---
+
 ## [1.0.2] - 2025-01-17
 
 ### Added
@@ -92,6 +103,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 | Version | Date | Summary |
 |---------|------|---------|
+| 1.0.3 | 2025-01-17 | AI-first and autonomous executor output styles |
 | 1.0.2 | 2025-01-17 | Added output-styles folder with UK professional style |
 | 1.0.1 | 2025-01-17 | Documentation improvements: Skills vs Agents vs MCP |
 | 1.0.0 | 2025-01-17 | Initial release with skills, agents, and hooks |
