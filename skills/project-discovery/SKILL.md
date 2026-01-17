@@ -2,7 +2,7 @@
 name: project-discovery
 description: Guide through requirements gathering before coding. Creates PROJECT.md with vision, features, tech stack decisions, and success criteria. Asks the key question - does this need a database? Triggers: new project, start project, what are we building, project discovery, requirements gathering, before we start, plan project.
 context: fork
-allowed_tools:
+allowed-tools:
   - Read
   - Write
   - WebSearch

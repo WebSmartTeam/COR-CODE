@@ -2,7 +2,7 @@
 name: saas-phase-builder
 description: Execute a single SaaS/platform build phase with fresh 200k token context (prevents context rot). Only for projects with database/auth/payments - not simple sites. Runs in forked context for maximum quality. Triggers: build phase, execute phase, SaaS phase, platform phase, run phase 2, fresh context build, context rot.
 context: fork
-allowed_tools:
+allowed-tools:
   - Read
   - Write
   - Edit

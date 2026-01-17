@@ -1,7 +1,7 @@
 ---
 name: phase-checkpoint
 description: Pause for human verification between major build phases. Presents summary of completed work and checklist before proceeding. Use after foundation, auth, core features, payments, or before deployment. Triggers: checkpoint, verify phase, phase complete, ready to proceed, quality gate, before next phase, review what we built.
-allowed_tools:
+allowed-tools:
   - Read
   - Bash
   - TodoWrite
