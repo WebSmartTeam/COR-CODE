@@ -76,6 +76,16 @@ Instructions for Claude in Markdown.
 - Use `allowed-tools` for read-only skills
 - Supporting files use progressive disclosure
 
+## Skills vs Agents vs MCP
+
+| Component | Purpose | Context |
+|-----------|---------|---------|
+| **Skills** | Add knowledge and guidance | Current conversation |
+| **Agents** | Domain expertise with tool restrictions | Separate context (isolated) |
+| **MCP** | Provide tools | External connections |
+
+**Skills** tell Claude *how* to do things. **MCP** provides *what* tools to use. **Agents** run in *isolation* with specific expertise.
+
 ## Docs
 
 https://code.claude.com/docs/en/skills

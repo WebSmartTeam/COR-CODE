@@ -13,6 +13,26 @@ Developed by [COR Solutions](https://msp.corsolutions.co.uk) - Professional AI-e
 | `agents/` | Specialist personas for domain expertise |
 | `hooks/` | Automation hooks for quality gates |
 
+## Skills vs Agents vs MCP
+
+Understanding how these three concepts work together:
+
+| Component | What It Does | Example |
+|-----------|--------------|---------|
+| **Skills** | Add knowledge to the current conversation | "Always use UK English", "Follow this deployment pattern" |
+| **Agents** | Run in separate context with specific tools | Security specialist with threat modeling focus |
+| **MCP** | Provides tools Claude can use | Database connections, browser automation |
+
+**The relationship:**
+- **Skills** tell Claude *how* to use tools and follow standards
+- **Agents** run in *isolation* with their own tool access and domain expertise
+- **MCP** *provides* the tools themselves (Context7, Playwright, etc.)
+
+**When to use which:**
+- Use **Skills** for guidance, patterns, and standards
+- Use **Agents** when you need isolation or different tool access
+- Use **MCP** to connect Claude to external systems
+
 ## Global vs Local Configuration
 
 Claude Code supports configuration at two levels:
