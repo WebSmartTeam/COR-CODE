@@ -1,122 +1,228 @@
 ---
 name: contact-form-builder
-description: Build professional contact forms with AWS SES email delivery, reCAPTCHA v3 spam protection, and branded HTML templates. Sends dual emails - owner notification + customer confirmation. Triggers: contact form, build form, email form, create contact page, add contact form, form with email, enquiry form.
+description: Build email-sending features with AWS SES, reCAPTCHA v3 spam protection, Zod validation, XSS sanitisation, and rate limiting. Covers contact forms, enquiry forms, newsletter signups, booking requests - any feature that sends email from a website. Always sends dual emails (owner notification + customer confirmation). Triggers: contact form, email form, enquiry form, send email, newsletter signup, booking form, callback request.
+updated: 2025-01-18
 ---
 
-# AWS SES Contact Form Builder
+# Website Email Feature Builder
 
-**Purpose**: Professional contact forms with spam protection and dual email delivery (owner notification + customer confirmation).
+**Purpose**: Any website feature that sends email - contact forms, enquiry forms, callbacks, bookings, newsletter signups. Enterprise-grade with spam protection, validation, and security.
 
 ## When to Use
 
 - "create a contact form"
-- "build a contact form with email"
-- "add contact form to website"
-- Form needing spam protection + email delivery
+- "add email functionality"
+- "build enquiry form"
+- "newsletter signup"
+- "callback request form"
+- "booking request with email"
+- Any feature sending email from website
 
-## Architecture (What We Build)
+## Architecture Overview
 
-| Component | Purpose |
-|-----------|---------|
-| Frontend form | React component with reCAPTCHA v3 |
-| Backend API route | Next.js Route Handler |
-| Owner notification | Branded HTML email to business |
-| Customer confirmation | Branded HTML email to submitter |
+```
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│  React Form     │────▶│  API Route      │────▶│  AWS SES        │
+│  + reCAPTCHA v3 │     │  + Validation   │     │  (eu-west-1)    │
+└─────────────────┘     │  + Sanitisation │     └────────┬────────┘
+                        │  + Rate Limit   │              │
+                        └─────────────────┘              ▼
+                                                 ┌──────────────┐
+                                                 │ DUAL EMAILS  │
+                                                 │ 1. Owner     │
+                                                 │ 2. Customer  │
+                                                 └──────────────┘
+```
 
-**Key decisions already made:**
-- AWS SES for email (eu-west-1 for UK/GDPR)
-- reCAPTCHA v3 (invisible, score-based)
-- Dual emails (always send to BOTH owner AND customer)
-- Table-based HTML emails (not CSS Grid/Flexbox - for email client compatibility)
+## Placeholder Reference
+
+Use these placeholders throughout - Claude MUST ask user to provide values:
+
+| Placeholder | Description | Example |
+|-------------|-------------|---------|
+| `{{COMPANY_NAME}}` | Business name | "Acme Solutions Ltd" |
+| `{{COMPANY_PHONE}}` | Phone number | "01234 567890" |
+| `{{COMPANY_ADDRESS}}` | Full address | "123 High Street, London, SW1A 1AA" |
+| `{{COMPANY_NUMBER}}` | Company registration | "12345678" |
+| `{{WEBSITE_URL}}` | Main website URL | "https://example.co.uk" |
+| `{{OWNER_EMAIL}}` | Where notifications go | "enquiries@example.co.uk" |
+| `{{FROM_EMAIL}}` | SES verified sender | "noreply@example.co.uk" |
+| `{{FROM_NAME}}` | Sender display name | "Acme Solutions" |
+| `{{PRIMARY_COLOR}}` | Brand primary colour | "#192a37" |
+| `{{SECONDARY_COLOR}}` | Brand secondary colour | "#899759" |
+| `{{ACCENT_COLOR}}` | Accent/CTA colour | "#ff5101" |
+| `{{LOGO_URL}}` | Logo image URL (optional) | "/images/logo.png" |
 
 ## What to Ask User
 
-1. **Brand colours** (primary, secondary, accent)
-2. **Owner email** (notifications go here)
-3. **From email** (verified SES sender)
-4. **Reply email** (where customer replies go)
-5. **Personality** (formal, friendly, witty)
-6. **Fields needed** (name, email, phone, subject, message, etc.)
+**MANDATORY before building:**
 
-## Implementation Notes
+1. **Company Details**
+   - Company name
+   - Phone number
+   - Address
+   - Company number (if displaying)
+   - Website URL
 
-### reCAPTCHA v3
-- Load script with `afterInteractive` (NOT `lazyOnload` - must load before form submit)
-- Use score threshold 0.5+
-- Keep site key in env var but also hardcode in form (timing issues)
+2. **Email Configuration**
+   - Owner notification email (where enquiries go)
+   - From email (must be SES verified)
+   - From display name
 
-### AWS SES
-- Use IAM user with SES-only permissions
-- Verify sender domain with DKIM
-- Request production access (sandbox limits recipients)
+3. **Brand Colours**
+   - Primary colour (headers, backgrounds)
+   - Secondary colour (accents, highlights)
+   - Accent colour (CTAs, links)
 
-### Email Templates
-- Always provide solid colour before gradient (email client compatibility)
-- Use table layouts (outlook compatibility)
-- Inline all CSS
+4. **Form Fields Needed**
+   - Which fields? (name, email, phone, subject, message, etc.)
+   - Which are required?
+   - Any special validation? (min length, formats)
+
+5. **Personality/Tone**
+   - Formal, friendly, or witty?
+   - This affects email greetings and copy
+
+## Technology Stack (Non-Negotiable)
+
+| Component | Technology | Why |
+|-----------|------------|-----|
+| Email delivery | AWS SES | Reliable, GDPR compliant (eu-west-1) |
+| Spam protection | reCAPTCHA v3 | Invisible, score-based |
+| Input validation | Zod | Type-safe, comprehensive |
+| XSS prevention | DOMPurify | Industry standard sanitisation |
+| Rate limiting | @upstash/ratelimit | Redis-based, serverless |
+| Form state | React Hook Form | Performance, validation integration |
+
+## Critical Implementation Rules
+
+### 1. reCAPTCHA v3 Loading (MUST USE)
+```typescript
+// ✅ CORRECT - loads before form submit
+<Script
+  src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`}
+  strategy="afterInteractive"
+/>
+
+// ❌ WRONG - causes timeout errors
+strategy="lazyOnload"  // NEVER use this
+```
+
+### 2. Dual Email (ALWAYS SEND BOTH)
+Every form submission MUST send TWO emails:
+1. **Owner notification** - Full details with reply-to set to customer
+2. **Customer confirmation** - Thank you with summary of their message
+
+Never send just one. This is enterprise standard.
+
+### 3. Email Template Rules
+```html
+<!-- ✅ CORRECT - table layout for Outlook -->
+<table style="background-color: {{PRIMARY_COLOR}};">
+
+<!-- ❌ WRONG - breaks in Outlook -->
+<div style="display: flex;">
+```
+
+- Use TABLE layouts (not flexbox/grid)
+- Inline ALL CSS (no external stylesheets)
+- Add solid colour BEFORE gradients (fallback)
 - Test in Gmail, Outlook, Apple Mail
 
-### Dual Emails (CRITICAL)
-Every form submission sends TWO emails:
-1. **Owner notification** - Full form details + reply-to customer
-2. **Customer confirmation** - Thank you + summary of their message
+### 4. Validation Chain
+```
+User Input → Zod Schema → DOMPurify Sanitise → Safe Data → Send Email
+```
 
-### Validation
-- Minimum message length (10 chars typical)
-- Email format validation
-- Sanitise inputs (XSS/SQL prevention)
-- Rate limiting (5/min per IP typical)
+Never skip any step. See SECURITY.md for full implementation.
 
-## Personality Examples
+### 5. Rate Limiting
+```typescript
+// Default: 5 requests per hour per IP
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(5, '1 h'),
+})
+```
 
-### Formal
-- Badge: "NEW ENQUIRY"
-- Greeting: "Dear [Name]"
-- Sign-off: "Best regards"
+## File Structure to Create
 
-### Friendly
-- Badge: "DING DONG!"
-- Greeting: "Hey [Name]! 👋"
-- Sign-off: "Speak soon"
-
-### Witty
-- Badge: "✨ CHEERS!"
-- Greeting: "Hey [Name]! 🎉"
-- Sign-off: "Chat soon"
+```
+src/
+├── app/
+│   ├── contact/
+│   │   ├── page.tsx              # Contact page with form
+│   │   └── metadata.ts           # SEO metadata
+│   └── api/
+│       └── contact/
+│           └── route.ts          # API handler
+├── components/
+│   └── ContactForm.tsx           # Reusable form component
+└── lib/
+    ├── validation.ts             # Zod schemas
+    ├── sanitize.ts               # DOMPurify helpers
+    ├── ratelimit.ts              # Rate limiting setup
+    └── env.ts                    # Environment validation
+```
 
 ## Environment Variables
 
 ```bash
-# AWS SES
+# AWS SES (REQUIRED)
 AWS_REGION=eu-west-1
-AWS_ACCESS_KEY_ID=[ask user]
-AWS_SECRET_ACCESS_KEY=[ask user]
-SES_FROM_EMAIL=[verified sender]
-SES_TO_EMAIL=[owner notification]
+AWS_ACCESS_KEY_ID={{ASK_USER}}
+AWS_SECRET_ACCESS_KEY={{ASK_USER}}
 
-# reCAPTCHA v3
-RECAPTCHA_SECRET_KEY=[server key]
-NEXT_PUBLIC_RECAPTCHA_SITE_KEY=[client key]
+# Email addresses (REQUIRED)
+EMAIL_FROM={{FROM_EMAIL}}
+EMAIL_FROM_NAME={{FROM_NAME}}
+EMAIL_TO={{OWNER_EMAIL}}
+
+# reCAPTCHA v3 (REQUIRED)
+NEXT_PUBLIC_RECAPTCHA_SITE_KEY={{ASK_USER}}
+RECAPTCHA_SECRET_KEY={{ASK_USER}}
+
+# Rate limiting (REQUIRED for production)
+UPSTASH_REDIS_REST_URL={{ASK_USER}}
+UPSTASH_REDIS_REST_TOKEN={{ASK_USER}}
 ```
 
 ## Testing Checklist
 
-- [ ] Submit with valid data (should succeed)
-- [ ] Submit with short message (validation should catch)
-- [ ] Check owner email received
-- [ ] Check customer confirmation received
-- [ ] Test gradient rendering in email clients
-- [ ] Test reply-to works correctly
+- [ ] Submit with valid data → success
+- [ ] Submit with missing required fields → validation error
+- [ ] Submit with XSS payload `<script>alert('xss')</script>` → sanitised
+- [ ] Submit 6 times quickly → rate limited on 6th
+- [ ] Check owner receives notification email
+- [ ] Check customer receives confirmation email
+- [ ] Test reply-to works (reply goes to customer)
+- [ ] Test emails render correctly in Gmail
+- [ ] Test emails render correctly in Outlook
+- [ ] Test mobile responsiveness of form
 
-## Common Issues
+## Common Failures & Fixes
 
-| Problem | Cause | Solution |
-|---------|-------|----------|
-| White text on white | Gradient stripped | Add solid colour before gradient |
-| reCAPTCHA timeout | Script not loaded | Use `afterInteractive` strategy |
-| SES rejected | Sandbox/unverified | Verify domain, request production |
+| Symptom | Cause | Fix |
+|---------|-------|-----|
+| reCAPTCHA timeout | Wrong script strategy | Use `afterInteractive` |
+| White text on white bg | Email gradient stripped | Add solid colour fallback |
+| Form accepts `<script>` | No sanitisation | Add DOMPurify |
+| 500 error on submit | No validation | Add Zod schema |
+| Spam submissions | No rate limiting | Add Upstash ratelimit |
+| Only owner OR customer gets email | Forgot dual email | Send BOTH always |
+| SES rejects email | Sandbox mode | Request production access |
+| Outlook breaks layout | Using flexbox | Use table layout |
 
-## UK Standards
-- Use UK English in all email copy
+## Additional Resources
+
+- **IMPLEMENTATION.md** - Full code templates with placeholders
+- **SECURITY.md** - Validation, sanitisation, rate limiting code
+- **scripts/** - Copyable code files
+
+## UK Standards (Always Apply)
+
+- UK English spelling (colour, enquiry, organisation)
 - eu-west-1 region for GDPR compliance
-- British spellings (colour, favourite)
+- British date format (DD/MM/YYYY)
+- British phone format (+44)
+- Professional business tone
