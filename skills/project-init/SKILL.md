@@ -1,6 +1,6 @@
 ---
-name: project-setup
-description: Setup new projects with proper folder structure, git configuration, and UK standards. Creates CLAUDE.md, STYLE_GUIDE.md, DELETED_CODE.md in project root with website/app subfolder for deployable code. Triggers: setup project, new project, initialise project, create project, setup claude, start new build.
+name: project-init
+description: Initialise new or imported projects with proper folder structure, git configuration, and UK standards. Creates CLAUDE.md, STYLE_GUIDE.md, DELETED_CODE.md in project root with website/app subfolder for deployable code. Triggers: init project, new project, import project, clone project, take over project, initialise project, setup claude, start new build.
 updated: 2025-01-18
 user-invocable: true
 allowed-tools:
@@ -13,9 +13,9 @@ allowed-tools:
   - TodoWrite
 ---
 
-# Project Setup Skill
+# Project Init Skill
 
-**Purpose**: Setup new or imported projects with correct folder structure and UK standards.
+**Purpose**: Initialise new or imported projects with correct folder structure and UK standards.
 
 ## Project Structure Pattern
 
@@ -96,7 +96,7 @@ node_modules/
 - Date: DD/MM/YYYY
 - Phone: +44 format
 
-## Git Setup
+## Git Setup (New Projects)
 
 ```bash
 # In website/app subfolder (where package.json lives)
@@ -112,6 +112,31 @@ Co-Authored-By: COR Solutions AI <enquiries@corsolutions.co.uk>"
 # Create private repo under webSmartTeam org
 gh repo create webSmartTeam/{{PROJECT_NAME}} --private --source=. --remote=origin --push
 ```
+
+## Import Workflow (Existing Projects)
+
+When importing a project from git (taking over someone else's work):
+
+```bash
+# 1. Create project root folder with config
+mkdir -p {{PROJECT_NAME}}
+cd {{PROJECT_NAME}}
+
+# 2. Create wrapper config files (CLAUDE.md, STYLE_GUIDE.md, DELETED_CODE.md, .gitignore)
+# [Use templates from this skill]
+
+# 3. Clone existing repo into website/app subfolder
+git clone {{REPO_URL}} website/
+# OR for other project types:
+git clone {{REPO_URL}} app/
+git clone {{REPO_URL}} platform/
+
+# 4. Add .claude/settings.local.json in project root
+
+# 5. Add vercel.json with regions: ["lhr1"] if missing
+```
+
+**Key difference**: Imported projects already have git history - don't re-init, just wrap with our config structure.
 
 ## After Setup
 
