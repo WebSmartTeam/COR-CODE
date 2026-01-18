@@ -1,6 +1,7 @@
 ---
 name: site-harvest
 description: Extract complete website content, design system, and assets for rebuilding or migration. Uses Firecrawl for content/CSS extraction, Chrome for visual comparison. Generates theme skill file for rebuild. Triggers: harvest site, scrape website, extract design, clone website, migrate site, copy website design, grab design tokens.
+updated: 2025-01-18
 user-invocable: true
 allowed-tools:
   - Read

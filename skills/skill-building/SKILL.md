@@ -1,6 +1,7 @@
 ---
 name: skill-building
 description: Create effective Claude Code skills and agents. Covers the formula - references activate dormant knowledge, pet hates stop bad defaults, post-training fills gaps. Don't teach Claude what Claude knows. Triggers: create skill, build skill, write skill, make agent, skill template, agent template, how to write skills.
+updated: 2025-01-18
 ---
 
 # Skill & Agent Building
@@ -99,6 +100,7 @@ Never use Anthropic branding in commits.
 ---
 name: skill-name
 description: One line explaining when this activates
+updated: 2025-01-18
 ---
 
 # Skill Title
@@ -123,6 +125,7 @@ Agents are skills with a persona. Same rules apply - don't teach, guide.
 ---
 name: agent-name
 description: When this agent activates
+updated: 2025-01-18
 tools: [Tool1, Tool2]
 ---
 

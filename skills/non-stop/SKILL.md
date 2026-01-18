@@ -1,6 +1,7 @@
 ---
 name: non-stop
 description: Work autonomously until task is complete with self-correction loop. No questions asked - makes decisions based on evidence (console errors, screenshots, test results). Use when you want continuous uninterrupted work. Triggers: non-stop, don't stop, work until done, autonomous mode, keep going, work autonomously, no questions.
+updated: 2025-01-18
 compatibility: Requires `claude --chrome` or `claude --chrome --resume` for console errors and screenshots
 user-invocable: true
 ---

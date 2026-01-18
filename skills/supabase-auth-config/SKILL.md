@@ -1,6 +1,7 @@
 ---
 name: supabase-auth-config
 description: Configure Supabase authentication with single callback URL pattern. Covers redirect URLs, auth flow types (recovery, signup, email_change), and the type parameter routing pattern. Triggers: supabase auth, auth callback, redirect URL, password reset not working, auth configuration, login redirect, signup flow.
+updated: 2025-01-18
 ---
 
 # Supabase Auth Configuration

@@ -1,6 +1,7 @@
 ---
 name: seo-skill
 description: Apply technical SEO including meta tags, Schema.org structured data (BreadcrumbList, FAQPage, LocalBusiness), sitemap, robots.txt, and Core Web Vitals. Only modifies hidden/technical elements - produces reports for visible content changes. Triggers: SEO, meta tags, structured data, schema, sitemap, search optimisation, Google ranking, rich snippets.
+updated: 2025-01-18
 ---
 
 # SEO Skill

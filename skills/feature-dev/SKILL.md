@@ -1,6 +1,7 @@
 ---
 name: feature-dev
 description: Implement new features in existing projects using 7-phase workflow (Discovery → Explore → Clarify → Design → Implement → Review → Summary). Use when adding functionality, building new components, creating API endpoints, or extending existing systems. Triggers: new feature, implement, add functionality, build feature, extend, create endpoint, add component.
+updated: 2025-01-18
 user-invocable: true
 allowed-tools:
   - Read

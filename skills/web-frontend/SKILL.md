@@ -1,6 +1,7 @@
 ---
 name: web-frontend
 description: Apply frontend development standards for React/Next.js/Tailwind projects. Covers colour extraction from logos, avoiding AI-slop aesthetics, performance targets (LCP <2.5s), and modern CSS patterns. Triggers: component, responsive, accessibility, styling, UI, colours, Tailwind, layout, hover states, buttons, frontend.
+updated: 2025-01-18
 compatibility: Requires `claude --chrome` or `claude --chrome --resume` for colour picker and console access
 ---
 
