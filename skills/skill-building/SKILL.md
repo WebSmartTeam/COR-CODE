@@ -1,10 +1,42 @@
 ---
 name: skill-building
-description: Create effective Claude Code skills and agents. Covers the formula - references activate dormant knowledge, pet hates stop bad defaults, post-training fills gaps. Don't teach Claude what Claude knows. Triggers: create skill, build skill, write skill, make agent, skill template, agent template, how to write skills.
+description: Create effective Claude Code skills and agents. Covers official frontmatter spec, global vs project scope, and the formula - references activate dormant knowledge, pet hates stop bad defaults, post-training fills gaps. Triggers: create skill, build skill, write skill, make agent, skill template, how to write skills.
 updated: 2025-01-18
 ---
 
 # Skill & Agent Building
+
+## Global vs Project Skills
+
+| Scope | Location | Use For |
+|-------|----------|---------|
+| **Global (User)** | `~/.claude/skills/` | Personal workflows across ALL projects |
+| **Project (Local)** | `<project>/.claude/skills/` | Project-specific, committed to git |
+
+**Default**: Create project skills unless explicitly asked for global.
+
+## Official Frontmatter Spec
+
+```yaml
+---
+name: skill-name
+description: What + When + Triggers (for Claude to match requests)
+updated: 2025-01-18
+allowed-tools:              # NOTE: hyphen, not underscore!
+  - Read
+  - Write
+  - Bash
+model: haiku|sonnet|opus    # Optional: override model
+context: fork               # Optional: isolated 200k context
+user-invocable: true        # Can user call directly?
+---
+```
+
+**Key fields:**
+- `allowed-tools` - Restricts which tools the skill can use (hyphenated!)
+- `context: fork` - Runs in isolated subagent with fresh context
+- `user-invocable: true` - User can trigger via `/skill-name`
+- `model` - Override for specific model needs
 
 ## The Core Principle
 
@@ -96,37 +128,45 @@ Never use Anthropic branding in commits.
 
 ## Skill Structure
 
-```markdown
+```yaml
 ---
 name: skill-name
-description: One line explaining when this activates
+description: What it does + When to use + Triggers (comma-separated keywords)
 updated: 2025-01-18
+user-invocable: true        # If user can call via /skill-name
+allowed-tools:              # Optional: restrict available tools
+  - Read
+  - Write
+  - Bash
 ---
 
 # Skill Title
 
-[Core principle or key decision - 1-2 sentences max]
+[Core principle - 1-2 sentences]
 
 ## Preferences
-- Bullet points of "we do X, not Y"
+- "We do X, not Y"
 
 ## Anti-Patterns
-- Things to avoid that Claude might default to
+- Things Claude defaults to that we don't want
 
 ## Resources
-- Where to look for things not in training data
+- Where to look for post-training knowledge
 ```
 
 ## Agent Structure
 
-Agents are skills with a persona. Same rules apply - don't teach, guide.
+Agents live in `~/.claude/agents/` (global) or `<project>/.claude/agents/` (local).
 
-```markdown
+```yaml
 ---
 name: agent-name
-description: When this agent activates
+description: When this agent activates + domain expertise
 updated: 2025-01-18
-tools: [Tool1, Tool2]
+allowed-tools:
+  - Read
+  - Grep
+  - Bash
 ---
 
 # Agent Role
@@ -137,10 +177,10 @@ tools: [Tool1, Tool2]
 - What this agent prioritises
 
 ## Approach
-- How this agent thinks differently from default Claude
+- How this agent differs from default Claude
 
 ## Boundaries
-- What this agent defers to other agents
+- What this agent defers to others
 ```
 
 ## Signs You're Over-Documenting
