@@ -1,12 +1,12 @@
 ---
-name: contact-form-builder
-description: Build email-sending features with AWS SES, reCAPTCHA v3 spam protection, Zod validation, XSS sanitisation, and rate limiting. Covers contact forms, enquiry forms, newsletter signups, booking requests - any feature that sends email from a website. Always sends dual emails (owner notification + customer confirmation). Triggers: contact form, email form, enquiry form, send email, newsletter signup, booking form, callback request.
+name: contact-form-builder-ses
+description: Build AWS SES email features with reCAPTCHA v3, Zod validation, XSS sanitisation, and rate limiting. Uses placeholders until env vars added to Vercel. Dual emails (owner + customer confirmation). Triggers: contact form, email form, enquiry form, ses email, newsletter signup, booking form, callback request.
 updated: 2025-01-18
 ---
 
-# Website Email Feature Builder
+# AWS SES Contact Form Builder
 
-**Purpose**: Any website feature that sends email - contact forms, enquiry forms, callbacks, bookings, newsletter signups. Enterprise-grade with spam protection, validation, and security.
+**Purpose**: Contact forms and email features using AWS SES. Works with placeholders during development - add env vars to Vercel when ready to go live.
 
 ## When to Use
 
