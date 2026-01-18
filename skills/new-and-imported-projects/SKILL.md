@@ -1,6 +1,6 @@
 ---
-name: project-init
-description: Initialise new or imported projects. New projects get a private git repo created in the website/app subfolder. Imported projects are cloned into that subfolder. Project root contains Claude config (CLAUDE.md, STYLE_GUIDE.md) - git repo lives in subfolder only. Triggers: init project, new project, import project, clone project, take over project.
+name: new-and-imported-projects
+description: Initialise new or imported projects. New projects get a private git repo created in the website/app subfolder. Imported projects are cloned into that subfolder. Project root contains Claude config (CLAUDE.md, STYLE_GUIDE.md) - git repo lives in subfolder only. Triggers: new project, import project, clone project, take over project, setup project, initialise project.
 updated: 2025-01-18
 user-invocable: true
 allowed-tools:
@@ -13,7 +13,7 @@ allowed-tools:
   - TodoWrite
 ---
 
-# Project Init Skill
+# New and Imported Projects Skill
 
 **Purpose**: Initialise new or imported projects with correct folder structure and UK standards.
 
