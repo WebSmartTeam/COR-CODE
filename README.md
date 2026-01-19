@@ -94,6 +94,9 @@ cp -r COR-CODE/skills/feature-dev ~/.claude/skills/
 | `non-stop` | Autonomous development mode | Yes |
 | `vercel-deployment` | UK-first Vercel deployment | No |
 | `programmatic-claude` | Run Claude via CLI/SDK for automation | No |
+| `supabase-vercel-shop` | Complete e-commerce platform with CMS | No |
+| `stripe-shop-integration` | Stripe payment integration patterns | No |
+| `new-and-imported-projects` | Project setup for new or cloned repos | No |
 
 ## Agents Overview
 
@@ -107,6 +110,7 @@ cp -r COR-CODE/skills/feature-dev ~/.claude/skills/
 | `qa` | Testing, quality assurance |
 | `refactorer` | Code quality, technical debt |
 | `scribe` | Documentation, UK English |
+| `ecommerce-builder` | E-commerce platforms with Supabase/Stripe |
 
 ## Requirements
 
