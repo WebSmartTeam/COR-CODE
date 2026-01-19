@@ -97,6 +97,7 @@ cp -r COR-CODE/skills/feature-dev ~/.claude/skills/
 | `supabase-vercel-shop` | Complete e-commerce platform with CMS | No |
 | `stripe-shop-integration` | Stripe payment integration patterns | No |
 | `new-and-imported-projects` | Project setup for new or cloned repos | No |
+| `cloudflare-mcp` | Create MCP servers on Cloudflare Workers | No |
 
 ## Agents Overview
 
