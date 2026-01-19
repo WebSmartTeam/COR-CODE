@@ -6,6 +6,7 @@ All documentation available as clean markdown at `https://code.claude.com/docs/e
 
 ## Documentation URLs
 
+### Claude Code CLI Documentation
 | Topic | URL | Last Verified |
 |-------|-----|---------------|
 | **Skills** | https://code.claude.com/docs/en/skills.md | 2025-01-17 |
@@ -22,6 +23,15 @@ All documentation available as clean markdown at `https://code.claude.com/docs/e
 | **Slash Commands** | https://code.claude.com/docs/en/slash-commands.md | 2025-01-17 |
 | **Memory (CLAUDE.md)** | https://code.claude.com/docs/en/memory.md | 2025-01-17 |
 
+### Claude API & Agent SDK Documentation (Advanced)
+| Topic | URL | Last Verified |
+|-------|-----|---------------|
+| **MCP Connector (API)** | https://platform.claude.com/docs/en/agents-and-tools/mcp-connector.md | 2025-01-19 |
+| **Remote MCP Servers** | https://platform.claude.com/docs/en/agents-and-tools/remote-mcp-servers.md | 2025-01-19 |
+| **Agent SDK MCP** | https://platform.claude.com/docs/en/agent-sdk/mcp.md | 2025-01-19 |
+
+**Note**: The API/SDK docs above are for server-side and programmatic usage, not CLI configuration.
+
 ## GitHub Repository
 
 | Resource | URL | Purpose |
@@ -34,7 +44,7 @@ All documentation available as clean markdown at `https://code.claude.com/docs/e
 
 ---
 
-## Key Findings (2025-01-17 Audit)
+## Key Findings (2025-01-19 Audit)
 
 ### Skills Frontmatter (Official Spec)
 
@@ -109,6 +119,46 @@ keep-coding-instructions: false    # Keep default coding instructions
 
 **Tool Search**: `ENABLE_TOOL_SEARCH=auto|true|false|auto:N`
 
+### MCP Tool Naming & Wildcards (2025-01-19)
+
+**Tool Naming Convention**:
+```
+mcp__<server-name>__<tool-name>
+```
+
+**Wildcard Patterns for allowedTools**:
+```json
+{
+  "autoApproveTools": [
+    "mcp__context7__*",      // All context7 tools
+    "mcp__magic__*",         // All magic tools
+    "mcp__supabase__*"       // All supabase tools
+  ]
+}
+```
+
+**Best Practices**:
+- Use wildcards to auto-approve trusted MCP servers
+- Place in `~/.claude/settings.json` for global approval
+- Tool search auto-activates when tools exceed 10% of context window
+
+### MCP API Integration (Advanced - Not CLI)
+
+**MCP Connector** (for API/SDK, not CLI):
+- Beta header: `mcp-client-2025-11-20`
+- Toolset configuration in `tools` array
+- Supports allowlist/denylist patterns per tool
+
+**Remote MCP Servers**:
+- HTTP transport required (no local stdio)
+- Third-party hosted MCP servers
+- Authentication via headers
+
+**Agent SDK MCP**:
+- For programmatic claude-agent-sdk usage
+- `permissionMode`: bypassPermissions, acceptEdits, plan, fullAutoMcp, none
+- Supports in-process SDK MCP servers
+
 ### Programmatic Mode (Agent SDK)
 
 **Note**: "Headless mode" is now called "Agent SDK"
@@ -181,4 +231,4 @@ irm https://claude.ai/install.ps1 | iex
 3. Update COR-CODE if new features
 4. Update timestamps above
 
-**Last full audit**: 2025-01-17
+**Last full audit**: 2025-01-19
