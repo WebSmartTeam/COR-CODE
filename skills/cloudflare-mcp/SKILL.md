@@ -1,16 +1,16 @@
 ---
 name: cloudflare-mcp
-description: Create and configure MCP servers on Cloudflare Workers. Use for remote MCP deployment, HTTP transport setup, worker-based tool servers, or when user mentions "cloudflare mcp", "worker mcp", or "remote mcp server".
+description: Create MCP servers on Cloudflare Workers using the MCP Connector pattern. Use when user mentions "cloudflare mcp", "worker mcp", "mcp connector", or wants to deploy MCP tools on Cloudflare.
 ---
 
-# Cloudflare Worker MCP Server
+# Cloudflare MCP Connector
 
-Build and deploy MCP (Model Context Protocol) servers on Cloudflare Workers for remote tool access.
+Build and deploy MCP (Model Context Protocol) servers on Cloudflare Workers using the MCP Connector pattern.
 
 ## Why Cloudflare Workers for MCP?
 
 - **Global edge deployment** - Low latency worldwide
-- **HTTP transport** - Official recommended transport for remote MCP
+- **MCP Connector compatible** - Works with Claude API MCP integration
 - **No cold starts** - Always-on serverless
 - **Free tier** - 100K requests/day free
 - **Easy authentication** - Headers-based auth
