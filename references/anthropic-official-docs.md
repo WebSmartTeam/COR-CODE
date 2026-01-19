@@ -22,6 +22,16 @@ All documentation available as clean markdown at `https://code.claude.com/docs/e
 | **Slash Commands** | https://code.claude.com/docs/en/slash-commands.md | 2025-01-17 |
 | **Memory (CLAUDE.md)** | https://code.claude.com/docs/en/memory.md | 2025-01-17 |
 
+## GitHub Repository
+
+| Resource | URL | Purpose |
+|----------|-----|---------|
+| **Changelog** | https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md | Track new features, breaking changes, updates |
+| **Issues** | https://github.com/anthropics/claude-code/issues | Bug reports, feature requests |
+| **Discussions** | https://github.com/anthropics/claude-code/discussions | Community Q&A |
+
+**Check the changelog** when Claude Code updates to see what's new or changed.
+
 ---
 
 ## Key Findings (2025-01-17 Audit)
