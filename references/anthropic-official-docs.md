@@ -14,7 +14,7 @@ All documentation available as clean markdown at `https://code.claude.com/docs/e
 | **Hooks Guide** | https://code.claude.com/docs/en/hooks-guide.md | 2025-01-17 |
 | **Sub-Agents** | https://code.claude.com/docs/en/sub-agents.md | 2025-01-17 |
 | **Headless/Programmatic** | https://code.claude.com/docs/en/headless.md | 2025-01-17 |
-| **MCP Servers** | https://code.claude.com/docs/en/mcp.md | 2025-01-17 |
+| **MCP Servers** | https://code.claude.com/docs/en/mcp.md | 2025-01-19 |
 | **Plugins** | https://code.claude.com/docs/en/plugins.md | 2025-01-17 |
 | **Discover Plugins** | https://code.claude.com/docs/en/discover-plugins.md | 2025-01-17 |
 | **Troubleshooting** | https://code.claude.com/docs/en/troubleshooting.md | 2025-01-17 |
@@ -41,6 +41,54 @@ All documentation available as clean markdown at `https://code.claude.com/docs/e
 | **Discussions** | https://github.com/anthropics/claude-code/discussions | Community Q&A |
 
 **Check the changelog** when Claude Code updates to see what's new or changed.
+
+## Engineering Blog (Advanced Patterns)
+
+| Topic | URL | Published | Key Insight |
+|-------|-----|-----------|-------------|
+| **Code Execution with MCP** | https://www.anthropic.com/engineering/code-execution-with-mcp | 2025-11-04 | "Code Mode" - 98.7% token savings |
+| **Cloudflare Code Mode** | https://blog.cloudflare.com/code-mode/ | 2025-09-26 | Original "Code Mode" implementation |
+
+### Code Mode Pattern (2025-11-04)
+
+**The Problem**: Direct tool calls consume excessive tokens:
+- Tool definitions overload context (150K+ tokens for thousands of tools)
+- Intermediate results flow through model multiple times
+
+**The Solution**: Present MCP servers as code APIs, not direct tool calls:
+```
+servers/
+├── google-drive/
+│   ├── getDocument.ts
+│   └── index.ts
+├── salesforce/
+│   ├── updateRecord.ts
+│   └── index.ts
+```
+
+**Benefits**:
+- **Progressive disclosure**: Load tools on-demand via filesystem exploration
+- **Context efficiency**: Filter/transform data in execution environment before returning
+- **Better control flow**: Loops, conditionals, error handling in code
+- **Privacy-preserving**: Intermediate results stay in execution environment
+- **State persistence**: Write intermediate results to files for resumption
+- **Skills integration**: Save reusable functions with SKILL.md files
+
+**Cloudflare Reference**: https://blog.cloudflare.com/code-mode/ (original implementation, September 2025)
+
+**Why Code Mode Works** (Cloudflare insight):
+> "Making an LLM perform tasks with tool calling is like putting Shakespeare through a month-long class in Mandarin and then asking him to write a play in it."
+
+LLMs have seen millions of real TypeScript/code examples in training, but only contrived synthetic examples of tool calls.
+
+**Key Quote** (Anthropic): "LLMs are adept at writing code and developers should take advantage of this strength to build agents that interact with MCP servers more efficiently."
+
+**Cloudflare Implementation**:
+- `codemode` helper in Cloudflare Agents SDK
+- Converts MCP tools → TypeScript API definitions
+- Runs in V8 isolates (not containers) - millisecond startup
+- Bindings hide API keys from sandbox
+- Docs: https://github.com/cloudflare/agents/blob/main/docs/codemode.md
 
 ---
 
@@ -118,6 +166,33 @@ keep-coding-instructions: false    # Keep default coding instructions
 - `stdio` - Local processes
 
 **Tool Search**: `ENABLE_TOOL_SEARCH=auto|true|false|auto:N`
+- `auto` (default): Activates when tools exceed 10% of context window
+- `auto:N`: Custom threshold (e.g., `auto:50` for 50 tools)
+- `true`: Always enabled
+- `false`: Disabled
+
+### MCP Registry API (2025-01-19)
+
+**Endpoint**: `https://api.anthropic.com/mcp-registry/docs`
+
+Browse and discover MCP servers from the official Anthropic registry. Useful for finding community MCP servers.
+
+### Claude Code as MCP Server (2025-01-19)
+
+Run Claude Code itself as an MCP server for other applications:
+
+```bash
+claude mcp serve
+```
+
+This exposes Claude Code's capabilities to external MCP clients.
+
+### Managed MCP Configuration (2025-01-19)
+
+Claude Code supports managed MCP configuration for enterprise deployments:
+- Centralised server definitions
+- Organisation-wide tool policies
+- Automatic server provisioning
 
 ### MCP Tool Naming & Wildcards (2025-01-19)
 

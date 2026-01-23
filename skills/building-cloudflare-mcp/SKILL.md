@@ -1,5 +1,5 @@
 ---
-name: cloudflare-mcp
+name: building-cloudflare-mcp
 description: Create MCP servers on Cloudflare Workers using the MCP Connector pattern. Use when user mentions "cloudflare mcp", "worker mcp", "mcp connector", or wants to deploy MCP tools on Cloudflare.
 ---
 
@@ -21,10 +21,41 @@ When you need deeper context, fetch these with WebFetch:
 
 | Topic | URL |
 |-------|-----|
+| **Code Mode Pattern** | https://www.anthropic.com/engineering/code-execution-with-mcp |
 | Remote MCP Servers | https://platform.claude.com/docs/en/agents-and-tools/remote-mcp-servers.md |
 | MCP Connector API | https://platform.claude.com/docs/en/agents-and-tools/mcp-connector.md |
 | Agent SDK MCP | https://platform.claude.com/docs/en/agent-sdk/mcp.md |
 | Claude Code MCP | https://code.claude.com/docs/en/mcp.md |
+| Cloudflare Code Mode | https://blog.cloudflare.com/code-mode/ |
+
+### Code Mode (Advanced Pattern)
+
+For high-scale deployments with many tools, consider the **Code Mode** pattern:
+- Present MCP tools as code APIs (filesystem structure)
+- Agent writes code to call tools instead of direct tool calls
+- **98.7% token savings** for large tool sets
+- Filter/transform data in execution environment before returning
+
+**Why it works**: LLMs have seen millions of real TypeScript examples in training, but only contrived synthetic tool-call examples.
+
+**Cloudflare Agents SDK** (built-in Code Mode):
+```typescript
+import { codemode } from "agents/codemode/ai";
+
+const {system, tools} = codemode({
+  system: "You are a helpful assistant",
+  tools: { /* tool definitions */ },
+});
+
+const stream = streamText({
+  model: openai("gpt-5"),
+  system,
+  tools,
+  messages: [{ role: "user", content: "..." }]
+});
+```
+
+Docs: https://github.com/cloudflare/agents/blob/main/docs/codemode.md
 
 ## MCP Server Structure
 

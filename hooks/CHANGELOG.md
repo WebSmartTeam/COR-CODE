@@ -1,5 +1,24 @@
 # Hooks Changelog
 
+## 2025-01-23 - Setup Hook Added
+
+**New hook:** `setup-detector.sh` for project initialisation
+
+**Trigger:** `claude --init` (uses new Setup event from Claude Code 2.1.10+)
+
+**What it does:**
+- Checks if CLAUDE.md exists (project already configured)
+- If not, prompts Claude to ask user:
+  1. Project type (website/platform/app)
+  2. Project name
+  3. Existing git repo URL (or new project)
+- Then runs `new-and-imported-projects` skill
+
+**Why:**
+New `--init` flag in Claude Code triggers Setup hooks. Perfect for zero-friction project setup instead of manually invoking skills.
+
+---
+
 ## 2025-01-17 - Skill Detector Rewrite
 
 **What we changed:**

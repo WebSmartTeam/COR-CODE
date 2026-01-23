@@ -15,11 +15,17 @@ Hooks run shell commands at specific points in Claude Code's workflow. They exte
 
 ## Current Setup
 
-**One hook active** - skill-detector on prompt submit:
+**Two hooks active:**
 
 ```json
 // ~/.claude/settings.json
 "hooks": {
+  "Setup": [
+    {
+      "matcher": "",
+      "hooks": [{"type": "command", "command": "bash ~/.claude/hooks/setup-detector.sh"}]
+    }
+  ],
   "UserPromptSubmit": [
     {
       "matcher": "",
@@ -29,10 +35,16 @@ Hooks run shell commands at specific points in Claude Code's workflow. They exte
 }
 ```
 
+| Hook | Script | Purpose |
+|------|--------|---------|
+| `Setup` | `setup-detector.sh` | Project init via `claude --init` |
+| `UserPromptSubmit` | `skill-detector.sh` | Skill reminders on each prompt |
+
 ## Hook Events
 
 | Event | When | Use For |
 |-------|------|---------|
+| `Setup` | `claude --init` or `--maintenance` | Project initialisation |
 | `UserPromptSubmit` | User sends message | Skill reminders, context injection |
 | `PreToolUse` | Before tool runs | Validation, logging, blocking |
 | `PostToolUse` | After tool runs | Quality checks, notifications |
@@ -40,6 +52,8 @@ Hooks run shell commands at specific points in Claude Code's workflow. They exte
 | `Stop` | Main agent stops | Cleanup, reporting |
 | `SubagentStop` | Subagent stops | Aggregation, validation |
 | `PreCompact` | Before context compaction | Saving critical context |
+| `SessionStart` | Session begins/resumes | Environment setup |
+| `SessionEnd` | Session ends | Cleanup, logging |
 
 ## Format
 
