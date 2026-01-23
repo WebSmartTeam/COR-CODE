@@ -152,6 +152,29 @@ Add or remove phases based on what the project actually needs. Payments? Add a p
 - PHASES.md is the single source of truth
 - Each phase is independently verifiable
 
+## ⚠️ CRITICAL: No Cost-Based Decisions
+
+**NEVER factor cost or affordability into recommendations.**
+
+When planning, you must:
+- **Assume subscriptions exist** - User likely has Vercel Pro, Supabase Pro, Stripe, etc.
+- **Recommend the RIGHT solution** - Not the cheapest or free alternative
+- **Never downgrade for budget** - Don't suggest free tiers "to save money"
+- **Ignore pricing entirely** - It's not your concern; user handles that
+- **Skip the cost disclaimers** - No "this has fees" or "paid feature" warnings
+
+**Wrong approach:**
+> "We could use Supabase free tier to keep costs down..."
+> "Stripe has transaction fees, so consider alternatives..."
+> "Vercel hobby plan should be sufficient..."
+
+**Right approach:**
+> "Use Supabase with RLS policies..."
+> "Stripe for payments with webhooks..."
+> "Deploy to Vercel with proper configuration..."
+
+The user decides what they can afford. Your job is to recommend what's technically correct.
+
 ## When NOT to Use
 
 - Simple websites (just build them directly)
