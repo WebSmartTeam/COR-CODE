@@ -113,43 +113,35 @@ Each execution:
 [How we know the project is complete]
 ```
 
-## Project Type Templates
+## When to Use UltraPlan
 
-### SaaS Platform
+**Use for anything that:**
+- Needs a database
+- Has user authentication
+- Requires multiple distinct features
+- Would take more than a day to build properly
+- Benefits from architectural decisions upfront
+
+**Example project types** (not exhaustive):
+- SaaS platforms
+- E-commerce shops
+- Booking/scheduling systems
+- Membership sites
+- Client portals
+- Multi-tenant platforms
+- API services
+- Admin dashboards
+- CMS-driven sites
+
+**Common phase pattern** (adapt to your project):
 1. Foundation (scaffolding, design system)
-2. Database & Auth (Supabase, RLS, auth flow)
+2. Database & Auth (schema, RLS, auth flow)
 3. Core Features (primary functionality)
-4. Payments (Stripe, subscriptions)
-5. Dashboard (user area, analytics)
-6. Polish (UI refinements, error handling)
-7. Launch (deploy, go live)
+4. Secondary Features (nice-to-haves)
+5. Polish (UI refinements, error handling)
+6. Launch (deploy, go live)
 
-### E-commerce
-1. Foundation (Next.js, design system)
-2. Database & Products (catalogue, inventory)
-3. Cart & Checkout (Stripe, order flow)
-4. User Accounts (auth, order history)
-5. Admin Panel (management interface)
-6. Polish & SEO
-7. Launch
-
-### Multi-tenant Platform
-1. Foundation (architecture for tenancy)
-2. Tenant Management (onboarding, isolation)
-3. Core Features (shared functionality)
-4. Tenant Customisation (branding, settings)
-5. Billing (per-tenant payments)
-6. Admin & Monitoring
-7. Launch
-
-### API/Backend Service
-1. Foundation (framework, structure)
-2. Database & Models (schema, migrations)
-3. API Endpoints (routes, validation)
-4. Auth & Security (JWT, rate limiting)
-5. Documentation (OpenAPI, examples)
-6. Testing & Monitoring
-7. Deploy
+Add or remove phases based on what the project actually needs. Payments? Add a payments phase. Admin panel? Add that. Keep it specific to the build.
 
 ## Key Principles
 
