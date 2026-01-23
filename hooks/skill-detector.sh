@@ -37,3 +37,43 @@ if [[ "$PROMPT_LOWER" == *"design review"* ]] || \
     echo "Use the design-reviewer agent with Playwright screenshots."
     echo "</skill-reminder>"
 fi
+
+# Check for ultraplan/phase planning triggers
+if [[ "$PROMPT_LOWER" == *"ultraplan"* ]] || \
+   [[ "$PROMPT_LOWER" == *"plan phases"* ]] || \
+   [[ "$PROMPT_LOWER" == *"phase planning"* ]] || \
+   [[ "$PROMPT_LOWER" == *"deep plan"* ]] || \
+   [[ "$PROMPT_LOWER" == *"strategic plan"* ]] || \
+   [[ "$PROMPT_LOWER" == *"architect plan"* ]] || \
+   [[ "$PROMPT_LOWER" == *"execute phase"* ]] || \
+   [[ "$PROMPT_LOWER" == *"run phase"* ]]; then
+    echo "<skill-reminder>"
+    echo "SKILL DETECTED: ultraplan"
+    echo "Location: ~/.claude/skills/ultraplan/SKILL.md"
+    echo "TWO-STAGE WORKFLOW:"
+    echo "1. UltraPlan: --ultrathink (32K) for deep planning → PHASES.md"
+    echo "2. Execute: Fresh 200K context per phase → Maximum quality"
+    echo "Use for complex builds needing architectural thinking."
+    echo "</skill-reminder>"
+fi
+
+# Check for non-stop/autonomous mode triggers
+if [[ "$PROMPT_LOWER" == *"non-stop"* ]] || \
+   [[ "$PROMPT_LOWER" == *"nonstop"* ]] || \
+   [[ "$PROMPT_LOWER" == *"don't stop"* ]] || \
+   [[ "$PROMPT_LOWER" == *"dont stop"* ]] || \
+   [[ "$PROMPT_LOWER" == *"work until done"* ]] || \
+   [[ "$PROMPT_LOWER" == *"autonomous mode"* ]] || \
+   [[ "$PROMPT_LOWER" == *"work autonomously"* ]] || \
+   [[ "$PROMPT_LOWER" == *"keep going"* ]]; then
+    echo "<skill-reminder>"
+    echo "SKILL DETECTED: non-stop"
+    echo "Location: ~/.claude/skills/non-stop/SKILL.md"
+    echo "CRITICAL RULES:"
+    echo "- NEVER ask questions - make autonomous decisions"
+    echo "- Use TodoWrite to track progress"
+    echo "- Validate with chrome devtools (console errors, screenshots)"
+    echo "- Loop until quality-verified complete (max 10 iterations)"
+    echo "- Only stop when: todos done + no errors + screenshots good"
+    echo "</skill-reminder>"
+fi

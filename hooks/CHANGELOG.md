@@ -1,5 +1,25 @@
 # Hooks Changelog
 
+## 2025-01-23 - UltraPlan & Non-Stop Detection Added
+
+**Updated:** `skill-detector.sh` now detects two additional skills
+
+**UltraPlan triggers:**
+- "ultraplan", "plan phases", "phase planning", "deep plan", "strategic plan", "architect plan", "execute phase", "run phase"
+- Two-stage workflow: --ultrathink for planning → forked context for execution
+
+**Non-stop triggers:**
+- "non-stop", "nonstop", "don't stop", "work until done", "autonomous mode", "work autonomously", "keep going"
+- Autonomous work mode with chrome devtools validation
+
+**New skill:** `ultraplan` (renamed from saas-phase-builder)
+- Deep architectural planning with --ultrathink (32K tokens)
+- Phased execution with fresh 200K context per phase
+- Project type templates (SaaS, e-commerce, multi-tenant, API)
+- PHASES.md output format for build plans
+
+---
+
 ## 2025-01-23 - Setup Hook Added
 
 **New hook:** `setup-detector.sh` for project initialisation
