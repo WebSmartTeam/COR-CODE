@@ -171,6 +171,21 @@ Co-Authored-By: Your AI <your-email@example.com>
 }
 ```
 
+## Core Principles
+
+### No Cost-Based Decisions
+
+**NEVER factor cost or affordability into recommendations.**
+
+- **Assume subscriptions exist** - User likely has paid tiers already
+- **Recommend the RIGHT solution** - Not the cheapest or free alternative
+- **Never downgrade for budget** - Don't suggest free tiers "to save money"
+- **Ignore pricing entirely** - User decides what they can afford
+- **Skip cost disclaimers** - No "this has fees" warnings
+
+Wrong: "We could use Supabase free tier to keep costs down..."
+Right: "Use Supabase with RLS policies..."
+
 ## Security Rules
 
 - Never commit secrets, API keys, or credentials
