@@ -1,6 +1,6 @@
 ---
 name: phase-checkpoint
-description: Pause for human verification between major build phases. Presents summary of completed work and checklist before proceeding. Use after foundation, auth, core features, payments, or before deployment. Triggers: checkpoint, verify phase, phase complete, ready to proceed, quality gate, before next phase, review what we built.
+description: Pause for human verification between major build phases. Use BETWEEN ultraplan phases - after completing one phase, before starting the next. Presents summary of completed work and checklist. Works with ultraplan skill for phased builds. Triggers: checkpoint, verify phase, phase complete, ready to proceed, quality gate, before next phase, review what we built.
 updated: 2025-01-23
 allowed-tools:
   - Read
@@ -112,3 +112,9 @@ Verification prevents:
 - Deploying broken functionality
 - Wasting time on features that don't work
 - Context rot from debugging old issues
+
+## 🔗 Workflow Integration
+
+**Part of ultraplan workflow**: `ultraplan` creates phases → `phase-checkpoint` verifies each → repeat until complete.
+
+**Related**: `ultraplan` skill (creates the phases), `qa` agent (testing), `design-reviewer` agent (visual verification).

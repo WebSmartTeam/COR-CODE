@@ -45,14 +45,14 @@ if [[ "$PROMPT_LOWER" == *"ultraplan"* ]] || \
    [[ "$PROMPT_LOWER" == *"deep plan"* ]] || \
    [[ "$PROMPT_LOWER" == *"strategic plan"* ]] || \
    [[ "$PROMPT_LOWER" == *"architect plan"* ]] || \
-   [[ "$PROMPT_LOWER" == *"execute phase"* ]] || \
+   [[ "$PROMPT_LOWER" == *"create phase"* ]] || \
    [[ "$PROMPT_LOWER" == *"run phase"* ]]; then
     echo "<skill-reminder>"
     echo "SKILL DETECTED: ultraplan"
     echo "Location: ~/.claude/skills/ultraplan/SKILL.md"
     echo "TWO-STAGE WORKFLOW:"
     echo "1. UltraPlan: --ultrathink (32K) for deep planning → PHASES.md"
-    echo "2. Execute: Fresh 200K context per phase → Maximum quality"
+    echo "2. Create: Fresh 200K context per phase → Maximum quality"
     echo "Use for complex builds needing architectural thinking."
     echo "</skill-reminder>"
 fi

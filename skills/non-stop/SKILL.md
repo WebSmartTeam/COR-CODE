@@ -1,6 +1,6 @@
 ---
 name: non-stop
-description: Work autonomously until task is complete with self-correction loop. No questions asked - makes decisions based on evidence (console errors, screenshots, test results). Use when you want continuous uninterrupted work. Triggers: non-stop, don't stop, work until done, autonomous mode, keep going, work autonomously, no questions.
+description: Work autonomously until task is complete with self-correction loop. No questions asked - makes decisions based on evidence (console errors, screenshots, test results). Use when you want continuous uninterrupted work. Can be combined with ultraplan phases - "Create Phase 2 in non-stop mode". Triggers: non-stop, don't stop, work until done, autonomous mode, keep going, work autonomously, no questions.
 updated: 2025-01-18
 compatibility: Requires `claude --chrome` or `claude --chrome --resume` for console errors and screenshots
 user-invocable: true
@@ -115,3 +115,11 @@ User can interrupt at any time with:
 - Any direct question requiring human decision
 
 Otherwise, Claude continues until quality-verified complete.
+
+## 🔗 Workflow Integration
+
+**Combines with other skills:**
+- `ultraplan` - "Create Phase 2 in non-stop mode" for autonomous phase execution
+- `phase-checkpoint` - Run after non-stop completes for human verification
+
+**Related**: Chrome DevTools MCP (for console/screenshots), `qa` agent (testing), TodoWrite (progress tracking).

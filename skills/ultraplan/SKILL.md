@@ -1,6 +1,6 @@
 ---
 name: ultraplan
-description: Deep architectural planning with --ultrathink (32K tokens) followed by phased execution with fresh context. Two-stage workflow - UltraPlan creates comprehensive PHASES.md, then Execute runs each phase with pristine 200K context. Use for any complex build requiring multiple phases. Triggers: ultraplan, plan phases, phase planning, architect plan, deep plan, strategic plan.
+description: Deep architectural planning with --ultrathink (32K tokens) followed by phased creation with fresh context. Two-stage workflow - UltraPlan creates comprehensive PHASES.md, then Create builds each phase with pristine 200K context. Use for any complex build requiring multiple phases. Use phase-checkpoint skill between phases for human verification. Delegates to architect/frontend/backend agents during execution. Triggers: ultraplan, plan and create, plan phases, deep plan, strategic plan, architect plan.
 updated: 2025-01-23
 context: fork
 allowed-tools:
@@ -15,9 +15,9 @@ allowed-tools:
   - Task
 ---
 
-# UltraPlan & Execute
+# UltraPlan & Create
 
-**Purpose**: Two-stage workflow for complex builds - deep planning with maximum thinking, then clean execution with pristine context per phase.
+**Purpose**: Two-stage workflow for complex builds - deep planning with maximum thinking, then clean creation with pristine context per phase.
 
 ## The Problem This Solves
 
@@ -38,7 +38,7 @@ Complex projects fail because:
 - Risk identification upfront
 - Output: **PHASES.md** - the complete build plan
 
-### Stage 2: Execute (Clean Context)
+### Stage 2: Create (Clean Context)
 ```
 context: fork (fresh 200K per phase)
 ```
@@ -61,9 +61,9 @@ This triggers --ultrathink analysis and produces PHASES.md with:
 - Dependencies and risks
 - Success criteria per phase
 
-### Step 2: Execute Phases
+### Step 2: Create Phases
 ```
-"Execute Phase 1" or "Run ultraplan phase 2"
+"Create Phase 1" or "Run ultraplan phase 2"
 ```
 
 Each execution:
@@ -145,7 +145,7 @@ Add or remove phases based on what the project actually needs. Payments? Add a p
 
 ## Key Principles
 
-> **Plan deep, execute clean.**
+> **Plan deep, create clean.**
 
 - --ultrathink ensures nothing is missed
 - Forked context ensures maximum quality
@@ -183,3 +183,18 @@ The user decides what they can afford. Your job is to recommend what's technical
 - Projects under ~4 hours of work
 
 Use ultraplan for projects that genuinely need architectural thinking and phased execution.
+
+## 🔗 Workflow Integration
+
+```
+project-discovery (if requirements unclear)
+        ↓
+    ultraplan → PHASES.md
+        ↓
+    For each phase:
+      Create Phase N → phase-checkpoint → Next
+        ↓
+    Project complete
+```
+
+**Related**: `phase-checkpoint` (between phases), `architect`/`frontend`/`backend` agents (during execution), `non-stop` skill (autonomous mode).
