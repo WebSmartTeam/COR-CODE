@@ -1,7 +1,7 @@
 ---
 name: phase-checkpoint
 description: Pause for human verification between major build phases. Presents summary of completed work and checklist before proceeding. Use after foundation, auth, core features, payments, or before deployment. Triggers: checkpoint, verify phase, phase complete, ready to proceed, quality gate, before next phase, review what we built.
-updated: 2025-01-18
+updated: 2025-01-23
 allowed-tools:
   - Read
   - Bash
@@ -31,15 +31,17 @@ List what was built this phase:
 - Tests passing
 
 ### 2. Verification Steps
-Guide human through testing:
+Guide human through testing on Vercel preview:
 ```bash
-# Start dev server
-npm run dev
+# Push to trigger Vercel preview deployment
+git push
 
-# Check these URLs:
-# - http://localhost:3000 (or 3001)
-# - http://localhost:3000/auth/login
-# - http://localhost:3000/dashboard
+# Check the Vercel preview URL (from deployment):
+# - https://project-abc123.vercel.app
+# - https://project-abc123.vercel.app/auth/login
+# - https://project-abc123.vercel.app/dashboard
+
+# ⚠️ NEVER use localhost - always test on real Vercel URLs
 ```
 
 ### 3. Checklist
@@ -80,13 +82,15 @@ Based on response:
    • Sign up / Sign in / Sign out working
    • Protected dashboard route
 
-🧪 Verify:
-   1. Go to http://localhost:3000
+🧪 Verify (on Vercel preview URL):
+   1. Go to https://[project].vercel.app
    2. Click "Sign Up" - create test account
    3. Check email for confirmation
    4. Confirm and verify redirect to dashboard
    5. Check Supabase → Auth → Users (should see new user)
    6. Click "Sign Out" - verify redirect to home
+
+   ⚠️ Ensure Supabase auth redirects include your preview URL!
 
 📝 Commits:
    • feat: Add Supabase auth configuration
