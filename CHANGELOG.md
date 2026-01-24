@@ -6,6 +6,39 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 ---
 
+## [1.0.6] - 2025-01-23
+
+### Added
+
+**Skills:**
+- `ultraplan/` - Deep architectural planning with --ultrathink (32K tokens) + phased execution with fresh 200K context
+  - Two-stage workflow: UltraPlan creates PHASES.md, then Execute runs each phase cleanly
+  - Project type agnostic - works for any complex build needing phases
+  - Replaced deprecated `saas-phase-builder`
+
+**Hooks:**
+- `setup-detector.sh` - Project initialisation via `claude --init` (Claude Code 2.1.10+)
+  - Detects if CLAUDE.md exists
+  - Prompts for project type, name, and existing git URL
+  - Triggers `new-and-imported-projects` skill
+
+**Skill Detection:**
+- Added ultraplan triggers: "ultraplan", "plan phases", "deep plan", "execute phase"
+- Added non-stop triggers: "non-stop", "autonomous mode", "keep going"
+
+### Changed
+
+**Core Principles:**
+- Added "No Cost-Based Decisions" principle to `global-claude/CLAUDE.md`
+- Claude must never factor pricing/affordability into recommendations
+- Assume user has subscriptions, recommend RIGHT solution not cheapest
+
+### Removed
+
+- `saas-phase-builder/` skill (replaced by `ultraplan`)
+
+---
+
 ## [1.0.5] - 2025-01-17
 
 ### Added
@@ -133,6 +166,8 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 | Version | Date | Summary |
 |---------|------|---------|
+| 1.0.6 | 2025-01-23 | UltraPlan skill, setup hook, no-cost-decisions principle |
+| 1.0.5 | 2025-01-17 | References folder, improved skill descriptions |
 | 1.0.4 | 2025-01-17 | Programmatic Claude skill for CLI/SDK automation |
 | 1.0.3 | 2025-01-17 | AI-first and autonomous executor output styles |
 | 1.0.2 | 2025-01-17 | Added output-styles folder with UK professional style |
