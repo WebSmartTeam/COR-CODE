@@ -78,6 +78,19 @@ Enables:
 - Visual validation and testing
 - Console log reading
 
+## No Localhost Development
+
+**NEVER run `npm run dev` or any local development server unless user explicitly requests it.**
+
+- ❌ Don't ask "shall I start the dev server?"
+- ❌ Don't run `npm run dev`, `yarn dev`, `pnpm dev`, `next dev`
+- ❌ Don't suggest testing on localhost:3000
+
+**Instead:**
+- ✅ Build and deploy to preview/production URLs
+- ✅ Test on real deployed URLs
+- ✅ Push changes and let CI/CD handle deployment
+
 ## Skills Configuration
 
 **Local Skills** (Default - Project-specific):
