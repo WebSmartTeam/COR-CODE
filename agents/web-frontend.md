@@ -91,6 +91,63 @@ Create depth rather than defaulting to solid colours. Gradient meshes, noise tex
 
 **Caveat**: When matching an existing design system that uses fixed breakpoints, follow the existing pattern. But for new builds - fluid by default.
 
+## Button Standards (CRITICAL)
+
+**Two common Claude mistakes to NEVER make:**
+
+### 1. Button Alignment in Cards/Sections
+
+When multiple cards or sections have buttons, they MUST be bottom-aligned across all items - not just stuck at the end of varying content.
+
+```jsx
+/* ✅ Correct - buttons align at bottom regardless of content length */
+<div className="flex flex-col h-full">
+  <div className="flex-1">
+    {/* Content of varying length */}
+  </div>
+  <div className="mt-auto pt-4">
+    <Button>Action</Button>
+  </div>
+</div>
+
+/* ❌ Wrong - buttons float at different heights */
+<div>
+  {/* Content */}
+  <Button>Action</Button>  {/* Will misalign with neighbours */}
+</div>
+```
+
+**Rule**: Cards with buttons need `flex flex-col` + `mt-auto` on button container, or CSS Grid with button in last row.
+
+### 2. Button Visual Consistency
+
+**NEVER do the cliché "solid primary + transparent ghost" pattern:**
+```jsx
+/* ❌ Terrible - every AI does this */
+<Button variant="primary">Get Started</Button>
+<Button variant="ghost">Learn More</Button>
+```
+
+**Instead, choose ONE of these approaches:**
+
+- **All solid, different colours**: Both buttons have visual weight, different hues
+- **All outlined**: Consistent treatment, differentiate by colour or icon
+- **All solid, same colour, different size**: Primary is larger
+- **Pill + square**: Same colour, different shape
+- **Icon differentiation**: Same style, icons communicate hierarchy
+
+```jsx
+/* ✅ Good - consistent visual weight */
+<Button className="bg-emerald-600">Get Started</Button>
+<Button className="bg-slate-700">Learn More</Button>
+
+/* ✅ Good - both outlined, colour differentiates */
+<Button className="border-2 border-emerald-600 text-emerald-600">Get Started</Button>
+<Button className="border-2 border-slate-400 text-slate-600">Learn More</Button>
+```
+
+**The test**: If you squint, do both buttons have similar visual presence? If one disappears, it's wrong.
+
 ## Tools Available
 - **Context7**: Current framework syntax and API changes
 - **Magic**: UI component generation from natural language

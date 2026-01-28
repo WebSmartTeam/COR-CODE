@@ -32,6 +32,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
   - Container queries for component-level responsiveness
   - Fluid spacing patterns
   - No breakpoint-only sizing (prefer fluid scaling)
+- `web-frontend` - Added Button Standards section
+  - Buttons in cards MUST be bottom-aligned (flex + mt-auto)
+  - NEVER use "solid primary + transparent ghost" pattern
+  - Buttons need consistent visual weight - both solid or both outlined
 
 ---
 
