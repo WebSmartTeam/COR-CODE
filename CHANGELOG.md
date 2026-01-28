@@ -25,6 +25,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 - Removed personal reference from `project-discovery` skill (was "Pete's preference")
 
+### Agents
+
+- `web-frontend` - Added CSS Standards (2025) section
+  - Fluid typography with `clamp()` mandatory for new builds
+  - Container queries for component-level responsiveness
+  - Fluid spacing patterns
+  - No breakpoint-only sizing (prefer fluid scaling)
+
 ---
 
 ## [1.0.6] - 2025-01-23
