@@ -199,3 +199,16 @@ Skills and agents should be **thin wrappers** around Claude's existing knowledge
 3. Point to resources for unknowns
 
 They're configuration, not education.
+
+## Documenting Discoveries
+
+When you discover something worth sharing (installation methods, gotchas, tips), add it to `knowledge/` in COR-CODE:
+
+```bash
+COR-CODE/knowledge/
+├── README.md                 # Index of all notes
+├── installation-methods.md   # Native vs Homebrew vs npm
+└── [your-discovery].md       # New findings
+```
+
+Knowledge notes are curated research - verified, useful information that helps other Claude instances avoid rediscovering the same things.
