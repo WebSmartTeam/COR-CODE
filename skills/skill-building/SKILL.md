@@ -213,18 +213,24 @@ COR-CODE/knowledge/
 
 Knowledge notes are curated research - verified, useful information that helps other Claude instances avoid rediscovering the same things.
 
-## COR-CODE Commits Checklist
+## Global → COR-CODE Sync (IMPORTANT)
 
-**Every time you commit to COR-CODE, you MUST:**
+**When you update anything in `~/.claude/` (agents, skills, hooks), ALWAYS ASK:**
 
-1. **Update CHANGELOG.md** - Add entry under current version or create new version
-2. **Update version table** at bottom of CHANGELOG.md
-3. **Sync to global** if skill/agent was updated (`cp -r COR-CODE/skills/x ~/.claude/skills/`)
+> "Should I sync this to COR-CODE repo and update the changelog?"
 
-Format:
+**If yes, do ALL of these:**
+
+1. **Copy to COR-CODE**: `cp ~/.claude/agents/x.md COR-CODE/agents/`
+2. **Update CHANGELOG.md** - Add entry under current version (or create new version)
+3. **Update version table** at bottom of CHANGELOG.md
+4. **Commit and push** to COR-CODE repo
+
 ```markdown
 ## [1.0.X] - YYYY-MM-DD
 
-### Added/Changed/Removed
+### Agents/Skills/Hooks
 - What you added or changed
 ```
+
+**Workflow**: Global (develop/test) → COR-CODE (distribute) - NEVER the other way

@@ -36,6 +36,9 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
   - Buttons in cards MUST be bottom-aligned (flex + mt-auto)
   - NEVER use "solid primary + transparent ghost" pattern
   - Buttons need consistent visual weight - both solid or both outlined
+- `skill-building` - Fixed sync workflow direction
+  - Now prompts "Should I sync to COR-CODE?" when updating global
+  - Workflow: Global (develop) → COR-CODE (distribute)
 
 ---
 
