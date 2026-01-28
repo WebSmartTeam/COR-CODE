@@ -25,6 +25,14 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 - Removed personal reference from `project-discovery` skill (was "Pete's preference")
 
+### Skills
+
+- `ultraplan` - Added Reference System Identification section
+  - When requirements unclear, identify closest known system (WordPress, Shopify, Thinkific, etc.)
+  - Reference table by domain (LMS, CMS, e-commerce, booking, etc.)
+  - Applies throughout project, not just initial planning
+  - Always ask user before assuming a reference
+
 ### Agents
 
 - `web-frontend` - Added CSS Standards (2025) section

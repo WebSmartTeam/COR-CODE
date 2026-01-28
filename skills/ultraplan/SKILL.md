@@ -1,7 +1,7 @@
 ---
 name: ultraplan
 description: Deep architectural planning with --ultrathink (32K tokens) followed by phased creation with fresh context. Two-stage workflow - UltraPlan creates comprehensive PHASES.md, then Create builds each phase with pristine 200K context. Use for any complex build requiring multiple phases. Use phase-checkpoint skill between phases for human verification. Delegates to architect/frontend/backend agents during execution. Triggers: ultraplan, plan and create, plan phases, deep plan, strategic plan, architect plan.
-updated: 2025-01-23
+updated: 2025-01-28
 context: fork
 allowed-tools:
   - Read
@@ -151,6 +151,38 @@ Add or remove phases based on what the project actually needs. Payments? Add a p
 - Forked context ensures maximum quality
 - PHASES.md is the single source of truth
 - Each phase is independently verifiable
+
+## Reference System Identification
+
+**When requirements are unclear, think of the closest known system.**
+
+Claude's training data includes extensive knowledge of popular platforms. When a user hasn't specified exact feature behaviour, identify a comparable system and ask:
+
+> "Should I base this on how [X] handles it?"
+
+**This applies throughout the project** - not just initial planning:
+- **New project**: "Build me an LMS" → "Like Thinkific's course/lesson structure?"
+- **Mid-build**: "Add user management" → "Like WordPress roles and capabilities?"
+- **Live project**: "We need refunds" → "Like Stripe's partial/full refund flow?"
+
+**Common reference systems by domain:**
+| Building | Reference Systems |
+|----------|-------------------|
+| LMS / Courses | Thinkific, Teachable, Moodle |
+| CMS / Content | WordPress, Strapi, Sanity |
+| E-commerce | Shopify, WooCommerce, Stripe |
+| Project management | Asana, Linear, Notion |
+| Booking / Scheduling | Calendly, Acuity, SimplyBook |
+| Membership / Community | Circle, Mighty Networks, Patreon |
+| Admin panels | Laravel Nova, Retool, Forestry |
+
+**Why this works:**
+- Activates dormant knowledge (Claude *knows* how WordPress handles user deletion)
+- Fills feature gaps intelligently (content reassignment, soft deletes, audit trails)
+- Uses established UX patterns users already understand
+- Avoids reinventing standard functionality
+
+**Critical:** Always ask the user first. They might want simpler, or have specific reasons for different behaviour. The reference informs features - it doesn't dictate implementation.
 
 ## ⚠️ CRITICAL: No Cost-Based Decisions
 
