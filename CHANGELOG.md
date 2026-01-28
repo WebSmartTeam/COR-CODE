@@ -6,6 +6,23 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 ---
 
+## [1.0.7] - 2025-01-28
+
+### Added
+
+**Knowledge Base:**
+- `knowledge/` folder for curated discoveries and operational notes
+- `knowledge/installation-methods.md` - Native installer vs Homebrew vs npm (native recommended)
+- `knowledge/README.md` - Index and guidelines for adding notes
+
+### Changed
+
+**Documentation:**
+- Updated main README to include `knowledge/` and `references/` in folder table
+- Updated `skill-building` skill with section on documenting discoveries
+
+---
+
 ## [1.0.6] - 2025-01-23
 
 ### Added
@@ -166,6 +183,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 | Version | Date | Summary |
 |---------|------|---------|
+| 1.0.7 | 2025-01-28 | Knowledge base folder for curated discoveries |
 | 1.0.6 | 2025-01-23 | UltraPlan skill, setup hook, no-cost-decisions principle |
 | 1.0.5 | 2025-01-17 | References folder, improved skill descriptions |
 | 1.0.4 | 2025-01-17 | Programmatic Claude skill for CLI/SDK automation |

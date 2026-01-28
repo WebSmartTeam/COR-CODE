@@ -212,3 +212,19 @@ COR-CODE/knowledge/
 ```
 
 Knowledge notes are curated research - verified, useful information that helps other Claude instances avoid rediscovering the same things.
+
+## COR-CODE Commits Checklist
+
+**Every time you commit to COR-CODE, you MUST:**
+
+1. **Update CHANGELOG.md** - Add entry under current version or create new version
+2. **Update version table** at bottom of CHANGELOG.md
+3. **Sync to global** if skill/agent was updated (`cp -r COR-CODE/skills/x ~/.claude/skills/`)
+
+Format:
+```markdown
+## [1.0.X] - YYYY-MM-DD
+
+### Added/Changed/Removed
+- What you added or changed
+```
