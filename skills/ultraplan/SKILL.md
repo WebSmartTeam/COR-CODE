@@ -207,6 +207,24 @@ When planning, you must:
 
 The user decides what they can afford. Your job is to recommend what's technically correct.
 
+## Auth Architecture Questions (Ask Early)
+
+Auth systems are fundamentally different based on requirements. **Always clarify before planning:**
+
+- **Role model**: Single role per user? Multi-role (user can be admin + editor)? Role hierarchy?
+- **Groups/Teams**: Do users belong to organisations/teams with their own permissions?
+- **Permissions**: Role-based (admin/editor/viewer) or fine-grained (can_edit_posts, can_delete_users)?
+- **Self-registration**: Open signup? Invite-only? Approval workflow?
+- **Multi-tenancy**: Shared database with RLS? Separate schemas per tenant?
+
+These decisions affect database schema, RLS policies, and entire auth flow - can't easily change later.
+
+## Common Pitfalls
+
+Brief warnings - Claude knows the solutions, just needs the flag.
+
+**Next.js + Supabase Auth**: Don't use localStorage for auth state in App Router. Use cookie-based auth handling (check Context7 for current patterns).
+
 ## When NOT to Use
 
 - Simple websites (just build them directly)

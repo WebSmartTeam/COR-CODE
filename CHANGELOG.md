@@ -32,6 +32,11 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
   - Reference table by domain (LMS, CMS, e-commerce, booking, etc.)
   - Applies throughout project, not just initial planning
   - Always ask user before assuming a reference
+- `ultraplan` - Added Auth Architecture Questions section
+  - Prompts to clarify role model, groups, permissions, registration, multi-tenancy
+  - Must ask early - these decisions affect schema and RLS fundamentally
+- `ultraplan` - Added Common Pitfalls section
+  - Next.js + Supabase: Don't use localStorage for auth in App Router, use cookie-based handling
 
 ### Agents
 
