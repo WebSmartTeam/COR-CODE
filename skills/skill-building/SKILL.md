@@ -215,11 +215,13 @@ Knowledge notes are curated research - verified, useful information that helps o
 
 ## Global → COR-CODE Sync (IMPORTANT)
 
-**When you update anything in `~/.claude/` (agents, skills, hooks), ALWAYS ASK:**
+**When you update anything in `~/.claude/` (agents, skills, hooks), ALWAYS ASK THE USER:**
 
-> "Should I sync this to COR-CODE repo and update the changelog?"
+> "Ready for me to sync this to COR-CODE and update the changelog?"
 
-**If yes, do ALL of these:**
+**Wait for user confirmation.** They may not want everything synced to distribution.
+
+**If user says yes, do ALL of these:**
 
 1. **Copy to COR-CODE**: `cp ~/.claude/agents/x.md COR-CODE/agents/`
 2. **Update CHANGELOG.md** - Add entry under current version (or create new version)
