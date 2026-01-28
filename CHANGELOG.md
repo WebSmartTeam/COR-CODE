@@ -21,6 +21,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 - Updated main README to include `knowledge/` and `references/` in folder table
 - Updated `skill-building` skill with section on documenting discoveries
 
+### Security
+
+- Removed personal reference from `project-discovery` skill (was "Pete's preference")
+
 ---
 
 ## [1.0.6] - 2025-01-23

@@ -50,7 +50,7 @@ allowed-tools:
 - Examples: marketing sites, portfolios, brochures, landing pages
 
 **YES DATABASE** → Full build (DB + Auth always go together)
-- Supabase (PostgreSQL) - Pete's preference
+- Supabase (PostgreSQL) - recommended for most projects
 - Supabase Auth with proper commercial implementation
 - RLS policies, proper security
 - Examples: platforms, dashboards, apps with user data
