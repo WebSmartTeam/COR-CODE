@@ -1,0 +1,23 @@
+{
+  "name": "claudecode-communication-elevenlabs-voice-fixed",
+  "version": "1.0.0",
+  "description": "FIXED ElevenLabs voice for Claude Code - TRUE STREAMING (500ms vs 3s latency), interactive setup, conversation modes",
+  "author": {
+    "name": "Pete Gypps - COR Solutions",
+    "email": "enquiries@corsolutions.co.uk",
+    "url": "https://msp.corsolutions.co.uk"
+  },
+  "license": "MIT",
+  "keywords": [
+    "claudecode",
+    "voice",
+    "tts",
+    "stt",
+    "speech-to-text",
+    "text-to-speech",
+    "elevenlabs",
+    "streaming",
+    "fixed",
+    "communication"
+  ]
+}

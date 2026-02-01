@@ -1,0 +1,6 @@
+#!/bin/bash
+# Quick launcher for Voice Manager
+# Usage: ./voice start | stop | status | mode conv | mode inst
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+python3 "$SCRIPT_DIR/voice-manager.py" "$@"

@@ -1,0 +1,48 @@
+# ElevenLabs TTS (Text-to-Speech) Configuration
+#
+# Location options:
+#   LOCAL:  ./.claude/plugins/elevenlabs-tts/config.toml (this project only)
+#   GLOBAL: ~/.claude/plugins/elevenlabs-tts/config.toml (all projects)
+
+[elevenlabs-tts]
+# Your ElevenLabs API key (get from https://elevenlabs.io/app/developers/api-keys)
+api_key = "your-api-key-here"
+
+# Voice ID - find yours at https://elevenlabs.io/app/voice-library
+# Default: Rachel (21m00Tcm4TlvDq8ikWAM)
+# Use your cloned voice ID for personalised output!
+voice_id = "21m00Tcm4TlvDq8ikWAM"
+
+# TTS model (eleven_multilingual_v2 recommended)
+model_id = "eleven_multilingual_v2"
+
+# Audio quality
+output_format = "mp3_44100_128"
+
+# Speech speed (0.5 to 2.0, default 1.0)
+speed = 1.0
+
+# Voice settings
+stability = 0.5
+similarity_boost = 0.75
+
+# Auto-read Claude responses
+# ⚠️ WARNING: Set to false (recommended) to prevent random speaking!
+# - false = Claude only speaks when you trigger voice input (Ctrl+Shift+Space)
+# - true = Claude speaks ALL responses automatically (can be noisy!)
+# ⚠️ If you installed GLOBAL, setting this to true makes ALL Claudes speak!
+auto_read = false
+
+# Hotkeys
+hotkey_toggle = "ctrl+shift+t"
+hotkey_pause = "ctrl+shift+p"
+hotkey_skip = "ctrl+shift+s"
+
+# Skip reading code blocks (recommended)
+skip_code_blocks = true
+
+# Maximum text length to read
+max_text_length = 5000
+
+# Play audio feedback sounds
+sound_effects = true
