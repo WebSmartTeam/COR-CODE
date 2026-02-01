@@ -6,22 +6,51 @@
 
 ---
 
-## SECURITY WARNING
+## SECURITY: Voice Safety Rules (Built-In Protection)
 
 **Voice commands can trigger destructive actions!**
 
-If someone in your environment says:
-- *"Delete all files"*
-- *"Permission approved"*
-- *"Yes, execute that"*
-- *"Drop the database"*
+If someone in your environment says *"Delete all files"* or *"Drop the database"*, Claude Code may interpret this as YOUR instruction and act on it.
 
-...Claude Code may interpret this as YOUR instruction and act on it.
+### Built-In Safety Filter (NEW!)
 
-**Recommendations:**
+This plugin includes **automatic safety rules** that BLOCK dangerous voice commands:
+
+```
+✅ BLOCKED: "delete all files"      (file deletion)
+✅ BLOCKED: "rm -rf /"              (recursive delete)
+✅ BLOCKED: "git push --force"      (force push)
+✅ BLOCKED: "drop database"         (database drop)
+✅ BLOCKED: "yes, execute that"     (permission confirmation)
+✅ BLOCKED: "permission approved"   (blanket approval)
+```
+
+When a dangerous command is detected via voice, you'll see:
+```
+⚠️  VOICE COMMAND BLOCKED: file deletion
+    Command was: delete all files...
+    This is a safety feature to prevent accidental destructive actions.
+    Type the command manually if you really mean it.
+```
+
+### Safety Configuration
+
+In your `config.toml`:
+
+```toml
+[safety]
+enabled = true        # Enable/disable safety filter (KEEP ON!)
+strict_mode = false   # Also block caution words like "delete"
+log_blocked = true    # Log blocked commands for audit
+custom_blocks = []    # Add your own patterns: ["deploy to prod"]
+custom_allows = []    # Override blocks: ["delete test files"]
+```
+
+### Additional Recommendations
+
 - Use in **private environments only** (not open offices, not public demos)
 - Keep **auto_read = false** so Claude doesn't speak in sensitive contexts
-- Consider using **Instruction Mode** (text responses) for sensitive operations
+- Consider **Instruction Mode** (text responses) for sensitive operations
 - Be aware of **who can hear your microphone** when voice input is active
 
 ---
@@ -51,6 +80,7 @@ This suite packages those fixes and improvements for the community.
 | **Voice Modes** | None | **Instruction vs Conversation** modes |
 | **Spoken Feedback** | None | **Announces mode changes** and status |
 | **Claude Code Skills** | None | **5 skills** for easy `/command` access |
+| **Voice Safety Rules** | None | **Blocks dangerous commands** (delete, drop, force push) |
 
 ## Features
 
@@ -62,6 +92,7 @@ This suite packages those fixes and improvements for the community.
 - **Voice Manager**: Spoken confirmations and mode switching
 - **Two Modes**: Instruction (text only) or Conversation (text + voice)
 - **Global vs Local**: Choose whether ALL projects or just ONE project can use voice
+- **Voice Safety Rules**: Automatic blocking of dangerous commands (delete, drop, force push)
 
 ## Prerequisites
 

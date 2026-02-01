@@ -19,3 +19,28 @@ transcription_mode = "batch"
 
 # Play audio feedback sounds for recording start/stop
 sound_effects = true
+
+# ============================================================
+# VOICE SAFETY RULES (Recommended: Keep enabled!)
+# ============================================================
+# Prevents accidental execution of destructive commands from voice input.
+# If someone near you says "delete all files", it gets BLOCKED.
+
+[safety]
+# Enable voice command safety filtering (STRONGLY RECOMMENDED)
+enabled = true
+
+# Strict mode: Also blocks commands containing caution words like "delete", "remove"
+# Set to true for maximum protection, false for balanced protection
+strict_mode = false
+
+# Custom patterns to block (regex supported)
+# Example: custom_blocks = ["deploy to production", "merge to main"]
+custom_blocks = []
+
+# Custom patterns to allow (overrides built-in blocks)
+# Example: custom_allows = ["delete test files"]
+custom_allows = []
+
+# Log blocked commands for security audit
+log_blocked = true

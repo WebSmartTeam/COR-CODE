@@ -26,7 +26,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - No API keys included in package
 - Clear warnings about Global + Auto-read implications
 - `.gitignore` excludes sensitive config files
-- **CRITICAL WARNING**: Voice commands from nearby people can trigger Claude actions - use in private environments only
+- **Voice Safety Rules**: Automatic blocking of dangerous voice commands:
+  - File deletion (delete all, rm -rf, wipe)
+  - Database operations (drop database, truncate table)
+  - Git destructive ops (push --force, reset --hard)
+  - Permission confirmations (yes execute, permission approved)
+  - Infrastructure destruction (terraform destroy, kubectl delete --all)
+- Configurable safety filter with strict mode option
+- Custom block/allow patterns for enterprise needs
+- Audit logging of blocked commands
 
 ### Documentation
 
