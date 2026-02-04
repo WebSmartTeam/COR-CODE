@@ -9,10 +9,10 @@ All documentation available as clean markdown at `https://code.claude.com/docs/e
 ### Claude Code CLI Documentation
 | Topic | URL | Last Verified |
 |-------|-----|---------------|
-| **Skills** | https://code.claude.com/docs/en/skills.md | 2025-01-17 |
+| **Skills** | https://code.claude.com/docs/en/skills.md | 2025-02-04 |
 | **Output Styles** | https://code.claude.com/docs/en/output-styles.md | 2025-01-17 |
 | **Hooks Guide** | https://code.claude.com/docs/en/hooks-guide.md | 2025-01-17 |
-| **Sub-Agents** | https://code.claude.com/docs/en/sub-agents.md | 2025-01-17 |
+| **Sub-Agents** | https://code.claude.com/docs/en/sub-agents.md | 2025-02-04 |
 | **Headless/Programmatic** | https://code.claude.com/docs/en/headless.md | 2025-01-17 |
 | **MCP Servers** | https://code.claude.com/docs/en/mcp.md | 2025-01-19 |
 | **Plugins** | https://code.claude.com/docs/en/plugins.md | 2025-01-17 |
@@ -92,7 +92,28 @@ LLMs have seen millions of real TypeScript/code examples in training, but only c
 
 ---
 
-## Key Findings (2025-01-19 Audit)
+## Key Findings (2025-02-04 Audit)
+
+### New Since Last Audit (2025-01-19 → 2025-02-04)
+
+**Sub-Agents (New Features)**:
+- `/agents` slash command — lists all available agents in current session
+- `--agents` CLI flag — start Claude Code in agent-only mode
+- Background agents with `run_in_background` parameter on Task tool
+- Agent resume capability — resume a previous agent by ID
+- `SubagentStart` / `SubagentStop` hook events for lifecycle management
+- `auto-compaction` — agents handle context limits with automatic summarisation
+- Agents can preload skills via `skills` field in frontmatter
+
+**Skills (New Features)**:
+- `context: fork` with `agent` field — runs skill as isolated subagent
+- `disable-model-invocation: true` — prevents Claude auto-triggering the skill
+- `argument-hint` — placeholder text shown when skill is invoked
+- Supporting files pattern — `skills/my-skill/SKILL.md` + `skills/my-skill/*.md` (all loaded)
+- Dynamic context injection — `!`command`` syntax executes shell and injects output
+- Skills can reference agent files for fork execution
+
+---
 
 ### Skills Frontmatter (Official Spec)
 
@@ -306,4 +327,4 @@ irm https://claude.ai/install.ps1 | iex
 3. Update COR-CODE if new features
 4. Update timestamps above
 
-**Last full audit**: 2025-01-19
+**Last full audit**: 2025-02-04

@@ -6,6 +6,40 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 ---
 
+## [1.2.0] - 2025-02-04
+
+### Added
+
+**Agents (8 new):**
+- `aws` - AWS services specialist: cloud infrastructure, serverless architecture, service health
+- `aws-alb` - AWS Application Load Balancer with ECS Fargate integration patterns
+- `mobile-app` - Cross-platform mobile development (Flutter, React Native, SwiftUI, Kotlin)
+- `project-setup` - New project scaffolding with folder structure, git config, UK standards
+- `content-migration` - Hardcoded content to database migration with zero data loss
+- `mcp-specialist` - MCP server configuration, integration, and troubleshooting
+- `harvester` - Web scraping, content extraction, design system harvesting via Chrome
+- `xero` - Xero accounting integration, invoicing automation, OAuth 2.0 mastery
+
+### Changed
+
+**Agents:**
+- Renamed `frontend` → `web-frontend` (aligns with global naming)
+- `web-frontend` - Added Production Checklist (favicon, meta tags, 404, loading/empty states)
+- Updated agents README with all 21 agents and version bump
+
+**Skills:**
+- `web-frontend` - Added Page Structure section (fixed header pattern, hero-bar/hero-image classes)
+
+**References:**
+- `anthropic-official-docs.md` - Full audit update (2025-01-19 → 2025-02-04)
+- Documented new features: /agents command, --agents CLI flag, background agents, agent resume, SubagentStart/SubagentStop hooks, skills field in agents, context:fork in skills, disable-model-invocation, argument-hint, dynamic context injection
+
+### Removed
+
+- Deleted stale `frontend.md` agent (replaced by `web-frontend.md`)
+
+---
+
 ## [1.0.7] - 2025-01-28
 
 ### Added
@@ -215,6 +249,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/) and [Semantic Ve
 
 | Version | Date | Summary |
 |---------|------|---------|
+| 1.2.0 | 2025-02-04 | 8 new agents, web-frontend rename + checklist, references audit |
 | 1.0.7 | 2025-01-28 | Knowledge base folder for curated discoveries |
 | 1.0.6 | 2025-01-23 | UltraPlan skill, setup hook, no-cost-decisions principle |
 | 1.0.5 | 2025-01-17 | References folder, improved skill descriptions |

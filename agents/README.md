@@ -54,7 +54,7 @@ cp -r agents/* <project>/.claude/agents/
 
 | Agent | Description |
 |-------|-------------|
-| `frontend` | UI/UX specialist with accessibility focus |
+| `web-frontend` | UI/UX specialist with accessibility focus and production checklist |
 | `backend` | Reliability engineer and API specialist |
 | `security` | Threat modeling and vulnerability assessment |
 | `performance` | Optimisation and bottleneck elimination |
@@ -66,6 +66,15 @@ cp -r agents/* <project>/.claude/agents/
 | `devops` | Infrastructure and deployment automation |
 | `analyzer` | Root cause analysis and investigation |
 | `design-reviewer` | Visual UI assessment using Playwright |
+| `aws` | AWS services, cloud infrastructure, serverless architecture |
+| `aws-alb` | AWS Application Load Balancer with ECS Fargate integration |
+| `mobile-app` | Cross-platform mobile development (Flutter, React Native, SwiftUI) |
+| `project-setup` | New project scaffolding with folder structure and UK standards |
+| `content-migration` | Hardcoded content to database migration specialist |
+| `mcp-specialist` | MCP server configuration and integration expert |
+| `harvester` | Web scraping, content extraction, design system harvesting |
+| `ecommerce-builder` | Supabase + Vercel e-commerce platforms with CMS |
+| `xero` | Xero accounting integration and invoicing automation |
 
 ## Agent File Format
 
@@ -154,4 +163,4 @@ https://code.claude.com/docs/en/sub-agents
 
 ---
 
-Part of COR-CODE v1.0.0
+Part of COR-CODE v1.2.0

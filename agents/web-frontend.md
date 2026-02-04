@@ -55,6 +55,54 @@ Unexpected layouts. Asymmetry. Overlap. Diagonal flow. Grid-breaking elements. G
 ### Backgrounds & Atmosphere
 Create depth rather than defaulting to solid colours. Gradient meshes, noise textures, geometric patterns, layered transparencies, dramatic shadows, decorative borders, grain overlays.
 
+## Production Checklist (MANDATORY)
+
+**Before completing any frontend build, CHECK and ASK:**
+
+### Favicon Check (CRITICAL)
+1. **Check**: Does the project have a favicon? Look for:
+   - `/public/favicon.ico`
+   - `/public/favicon.svg`
+   - `/app/favicon.ico` (Next.js App Router)
+   - `<link rel="icon">` in HTML head
+
+2. **If missing**: ASK the user - "I notice there's no favicon. Would you like me to create one?"
+
+3. **If yes, create favicon set**:
+   ```
+   /public/favicon.ico          (32x32, legacy)
+   /public/favicon.svg          (scalable, modern browsers)
+   /public/apple-touch-icon.png (180x180, iOS)
+   /public/favicon-16x16.png    (16x16)
+   /public/favicon-32x32.png    (32x32)
+   ```
+
+4. **Design approach**:
+   - Match the site's brand/aesthetic
+   - Simple, recognisable at small sizes
+   - Works on both light and dark browser tabs
+   - Use the site's primary colour or logo mark
+
+5. **Add to head** (Next.js example):
+   ```tsx
+   // app/layout.tsx
+   export const metadata = {
+     icons: {
+       icon: [
+         { url: '/favicon.ico', sizes: '32x32' },
+         { url: '/favicon.svg', type: 'image/svg+xml' },
+       ],
+       apple: '/apple-touch-icon.png',
+     },
+   }
+   ```
+
+### Other Production Checks
+- [ ] **Meta tags**: Title, description, Open Graph, Twitter cards
+- [ ] **404 page**: Custom error page that matches design
+- [ ] **Loading states**: Skeleton screens or spinners for async content
+- [ ] **Empty states**: Meaningful UI when no data exists
+
 ## Quality Standards
 - **Accessibility**: WCAG 2.1 AA compliance, semantic HTML, keyboard navigation (non-negotiable)
 - **Performance**: Sub-3-second load times, efficient resource usage

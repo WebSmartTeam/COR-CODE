@@ -1,7 +1,7 @@
 ---
 name: web-frontend
 description: Apply frontend development standards for React/Next.js/Tailwind projects. Covers colour extraction from logos, avoiding AI-slop aesthetics, performance targets (LCP <2.5s), and modern CSS patterns. Triggers: component, responsive, accessibility, styling, UI, colours, Tailwind, layout, hover states, buttons, frontend.
-updated: 2025-01-18
+updated: 2025-01-24
 compatibility: Requires `claude --chrome` or `claude --chrome --resume` for colour picker and console access
 ---
 
@@ -99,6 +99,71 @@ Fluid scales with clamp(). Semantic hierarchy (h1, h2) doesn't have to match vis
 
 ### Components
 shadcn/ui for accessible primitives. Radix UI + Tailwind.
+
+## Page Structure (Fixed Header Pattern)
+
+When using a fixed header, ALL pages must extend their hero/top section behind the header. Never use padding on `<main>` - it creates a white line gap.
+
+### CSS Classes (Add to globals.css)
+
+```css
+/* Hero Bar - Blue/solid background pages */
+.hero-bar {
+  background-color: #1F568E; /* or brand colour */
+  padding: 6rem 0 2rem 0; /* Mobile */
+}
+@media (min-width: 768px) {
+  .hero-bar { padding: 8rem 0 2.5rem 0; } /* Tablet */
+}
+@media (min-width: 1024px) {
+  .hero-bar { padding: 8.5rem 0 2.5rem 0; } /* Desktop */
+}
+
+/* Hero Image - Background image pages */
+.hero-image {
+  padding-top: 6rem; /* Mobile */
+}
+@media (min-width: 768px) {
+  .hero-image { padding-top: 8rem; } /* Tablet */
+}
+@media (min-width: 1024px) {
+  .hero-image { padding-top: 8.5rem; } /* Desktop */
+}
+```
+
+### Page Structure
+
+**Blue bar pages** (contact, about, blog, subpages):
+```tsx
+<Header />
+<main>
+  <section className="hero-bar">
+    <h1 className="page-title">Page Title</h1>
+  </section>
+  {/* Content */}
+</main>
+```
+
+**Background image pages** (homepage, main service pages):
+```tsx
+<Header />
+<main>
+  <section className="hero-image full-width relative min-h-[400px] flex items-center"
+    style={{ backgroundImage: 'url(...)' }}>
+    {/* Hero content */}
+  </section>
+  {/* Content */}
+</main>
+```
+
+### Common Mistakes
+- ❌ `<main className="pt-24">` - creates white line gap
+- ❌ `<main className="pt-[60px] md:pt-[85px]">` - creates white line gap
+- ❌ Inconsistent padding across pages
+- ✅ `<main>` with NO padding + hero class handles spacing
+
+### Consistency Rule
+Every interior page must use the SAME pattern. When fixing one page, fix ALL pages. Use batch sed/grep to ensure consistency.
 
 ## Performance Targets
 
